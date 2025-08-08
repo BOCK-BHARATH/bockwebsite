@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'space-navy': '#0B1F33',
+              'electric-blue': '#1F8EF1',
+              'bock-orange': '#FFA500',
+              'bock-indigo': '#6C5CE7',
+              'bock-neural': '#00A8FF',
+              'bock-green': '#20C997',
+              'bock-purple': '#9B59B6',
+              'bock-red': '#E74C3C'
+            },
+            fontFamily: {
+              'space': ['Space Grotesk', 'sans-serif'],
+              'cyber': ['Orbitron', 'sans-serif']
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'slide-down': 'slideDown 0.3s ease-out forwards',
+              'scale-up': 'scaleUp 0.3s ease-out forwards'
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(50px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              slideDown: {
+                '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              scaleUp: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+    <style>
+      [x-cloak] { display: none !important; }
+      
+      .progress-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .progress-image {
+        box-shadow: 0 0 30px rgba(31,142,241,0.3);
+      }
+      
+      /* Responsive image handling and content overflow fixes */
+      @media (max-width: 768px) {
+        .progress-image img {
+          height: 250px !important;
+          object-fit: cover;
+          object-position: center;
+        }
+        
+        /* Better text handling on mobile */
+        .mobile-text-break {
+          word-break: break-word;
+          hyphens: auto;
+        }
+        
+        /* Prevent horizontal overflow */
+        .progress-card {
+          overflow-x: hidden;
+        }
+        
+        /* Better spacing on mobile */
+        .mobile-compact {
+          padding: 1rem !important;
+        }
+        
+        /* Responsive text sizing */
+        .mobile-title {
+          font-size: 1.5rem !important;
+          line-height: 1.3;
+        }
+        
+        .mobile-subtitle {
+          font-size: 1rem !important;
+        }
+        
+        .mobile-body {
+          font-size: 0.875rem !important;
+          line-height: 1.5;
+        }
+      }
+      
+      @media (max-width: 640px) {
+        .progress-image img {
+          height: 220px !important;
+        }
+        
+        /* Extra compact on small screens */
+        .sm-compact {
+          padding: 0.75rem !important;
+        }
+        
+        /* Ensure no content extends beyond viewport */
+        .container-safe {
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+        
+        /* Better button spacing */
+        .mobile-button {
+          margin-top: 1rem;
+          font-size: 0.875rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .progress-image img {
+          height: 200px !important;
+        }
+        
+        .xs-title {
+          font-size: 1.25rem !important;
+          line-height: 1.2;
+        }
+        
+        .xs-text {
+          font-size: 0.8rem !important;
+        }
+      }
+      
+      .gradient-text {
+        background: linear-gradient(to right, #1F8EF1, #6C5CE7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body class="bg-[#030014] font-space">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-24 sm:pt-32 pb-16 px-4 overflow-hidden container-safe">
+      <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Title -->
+        <div class="text-center mb-12 sm:mb-20">
+          <span class="relative inline-block font-cyber text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-500 tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase font-light cursor-pointer
+                      border-t-2 border-b-2 border-transparent
+                      hover:border-t-current hover:border-b-current
+                      transition-[border-width,color] duration-500 ease-in-out mobile-text-break">
+               P R O G R E S S
+          </span>
+      </div>
+
+        <!-- Progress Cards -->
+        <div class="space-y-12 sm:space-y-16" x-data="{ activeCard: null }">
+          <!-- 2022 Card -->
+          <div class="progress-card rounded-3xl p-1" 
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded"
+               :class="{ 'transform transition-all duration-500': true }">
+            <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-4 sm:space-y-6">
+                  <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">2022 - 19th & 20th August</span>
+                  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">Place: Semi-Finalist EYSS - 2022<br class="hidden sm:block" />(Eco Youth Startup
+                    Summit)</h2>
+                  <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                      This is my 1st project (Startup): Bock Automotive Self-Powered
+                      Vehicles (SPV): The Future of Transportation. We believe in
+                      empowering the automobile industry by making SPVs. We concentrate
+                      on making cars that can use renewable energy as a source of power
+                      (sounds impossible right..? Remember, the same thing happened with
+                      EVs 20 years ago, but today it's a grand success). We are also
+                      concentrating on giving the car for most affordable prices
+                      inculcating most technologies backed by AI etc.
+                    </p>
+                  
+                                    
+                  <button class="group flex items-center gap-2 text-electric-blue mobile-button">
+                    <span class="text-sm sm:text-base">Read More</span>
+                    <i class="ph ph-arrow-right text-lg sm:text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+                
+                <div class="relative">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/1.png" alt="Future Vision" class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-6 sm:mt-8 border-t border-white/10 pt-6 sm:pt-8" >
+                  
+                 <span id="more" class="text-white text-sm sm:text-base">
+                   <br /><br />
+                   Team Members: <br />
+                   Rakesh S B (Design, Aerodynamics, Fuel) <br />
+                   Pratham Sinha (Working Mechanism & Fuel) <br />
+                   Kumkum Kumari (Design & Aerodynamics) <br />
+                   Adarsh Vinod (Working Mechanism & Electrical) <br />
+                   Aishwarya Palani (Design & Material Science) <br />
+                   Roheni M (Working Mechanism, Fuel & Technology) <br />
+                   Aayush Kumar (Working Mechanism & Fuel) <br />
+                   Harsh Gupta (Design & Simulation) <br />
+                   Harsh Kumar (Working Mechanism & Fuel)
+                 </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2023 Card -->
+          <div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/2.png" alt="Solar Science Workshop" class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2023 - 2nd to 6th January</span>
+                  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">Participated & Certified for Solar <br class="hidden sm:block" />
+                    Science & Aditya L1 Mission <br class="hidden sm:block" />
+                    by ISRO & <br class="hidden sm:block" />
+                    St Joseph's University</h2>
+                  <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                      This workshop will involve lectures and hands-on activities
+                      related to the Aditya L-1 mission. These activities will help
+                      address a few of the unsolved problems in the area of solar
+                      physics and space weather and underline the importance of the
+                      Aditya L-1 mission. <br /><br />
+                      Aditya L1 is India's first space-based observatory mission to
+                      study the Sun.
+                    </p>
+                  
+                  <button class="group flex items-center gap-2 text-bock-purple mobile-button">
+                    <span class="text-sm sm:text-base">Read More</span>
+                    <i class="ph ph-arrow-right text-lg sm:text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8">
+                  <span id="more3" class="text-white"> The mission consists of seven payloads: four remote
+                   sensing and three in-situ payloads to observe the solar
+                   atmosphere, its dynamics, and the space weather aspects at the
+                   Sun-Earth Lagrangian point (L1). The solar science workshop,
+                   jointly organised by ISRO and St. Joseph University (from January
+                   2, 2023, to January 6, 2023) will provide opportunities for
+                   younger colleagues to comprehend the current. understanding of the
+                   Sun and Space weather.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-card rounded-3xl p-1" 
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded"
+               :class="{ 'transform transition-all duration-500': true }">
+            <div class="bg-[#030014]/80 rounded-3xl p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                  <span class="text-electric-blue font-cyber text-lg">16th Jan 2023 - Present</span>
+                  <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-white">Place: Recognised by <br />IN-SPACe, Dept. of Space, <br />
+                    Govt. of India.</h2>
+                  <p class="font-raleway text-xl text-gray-300">
+                    We were invited to the Indian Space Industry Meet 2.0. Space
+                    Industry Meet 2.0 is in progress at AMA Ahmedabad now. The
+                    content-rich agenda of the meeting includes business opportunities
+                    in space data products, SATCOM, etc. We BockSpace is one among 65
+                    Startups under IN-SPACe. <br /><br />
+                    My 3rd Project (Startup) : Bock Space is a space research
+                    organisation managing 4 bodies under it. BockSpace will be a
+                    robust system for space technology that is highly ambitious in
+                    taking mankind towards advancements.
+                    </p>
+                                    
+                  <button class="group flex items-center gap-2 text-electric-blue">
+                    <span>Read More</span>
+                    <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+                
+                <div class="relative">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/3.png" alt="Future Vision" class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8" >
+                  
+                 <span id="more" class="text-white">
+                   <br />
+                     Team members: <br />
+                     Rakesh S B (Rocket Engineer) <br />
+                     Ganesh Dhanvatre (Aeronautical Engineer, SJCIT) <br />
+                     Shreyas Shivangekar (Aerospace Engineer, SJCIT) <br />
+                     Pradyumna (Rocket Propulsion Engineer, BSc) <br />
+                     Aswin Amritraj (Cosmologist, MSc )
+                 </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/5.png" alt="Solar Science Workshop" class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-lg">30th Sept - 23rd March</span>
+                  <h2 class="text-4xl md:text-5xl font-bold text-white">Place: Semi-Finalist (top 30/4000) at IIT Bombay, <br />e-yantra
+                    e-YIC</h2>
+                  <p class="text-xl text-gray-300">
+                    We went on to the top 30/4000 semi-finalists. We were given a
+                    stipend of ₹12,000 for our project from IIT Bombay. <br /><br />
+                    My 2nd Project (Startup): BockFoods have a mission of providing
+                    affordable & nutritious food to all. <br /><br />
+                    You will be able to get food which is much more nutritious & tasty
+                    with half of the price that you are paying right now. We have
+                    improvised the logistics, implementing  a drone delivery system
+                    which ensures 15 min delivery. Cooking robots automating the
+                    process & removing human intervention  making it a safe & clean
+                    food. Genetically modified vegetables/fruits/pulses/anything that
+                    is used to prepare the food which ensures much more nutritional
+                    value than the current existing practice. 
+                    </p>
+                  
+                  <button class="group flex items-center gap-2 text-bock-purple">
+                    <span>Read More</span>
+                    <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8">
+                  <span id="more3" class="text-white"> Team members : <br>
+                    Rakesh S <br>
+                    Harsha Diwakar <br>
+                    Mohan Rajeev H V <br>
+                    Isha Agarwal <br></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-card rounded-3xl p-1" 
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded"
+               :class="{ 'transform transition-all duration-500': true }">
+            <div class="bg-[#030014]/80 rounded-3xl p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                  <span class="text-electric-blue font-cyber text-lg">23rd & 24th June</span>
+                  <h2 class="text-4xl md:text-5xl font-bold text-white">Place: First at National Social Hackathon <br />by CMRIT,
+                    Bangalore</h2>
+                  <p class="text-xl text-gray-300">
+                    2 of my teams were shortlisted among the top 25. My first team
+                    Bock Automotive won first place. My second team Bock Foods
+                    received a lot of attention. Hope we win next time. <br />
+                    <br />
+                    Bengaluru: CMR Institute of Technology (CMRIT) and Atos India
+                    joined forces to successfully organise the National Social
+                    Hackathon, a groundbreaking event that brought together aspiring
+                    innovators from across the country. Mr. Umar Ali Shaikh, CEO at
+                    Atos India Pvt. Ltd graced the dais as the chief guest.
+                    </p>
+                  
+                                    
+                  <button class="group flex items-center gap-2 text-electric-blue">
+                    <span>Read More</span>
+                    <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+                
+                <div class="relative">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/6.png" alt="Future Vision" class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8" >
+                  
+                 <span id="more" class="text-white">
+                   <br />Team members under Bock Automotive : <br>
+                   Rakesh S B <br>
+                   Harsh Kumar <br>
+                   Adarsh Vinod <br>
+                   Pratham Sinha <br><br>
+                   Team members under Bock Foods : <br>
+                   Rakesh S B <br>
+                   Harsha Diwakar <br>
+                   Anagha Srinivas <br>
+                   Isha Agarwal <br>
+                 </span>
+              </div>
+            </div>
+          </div>
+
+<div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/9.jpg" alt="Solar Science Workshop" class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-lg">2023:23-24th June</span>
+                  <h2 class="text-4xl md:text-5xl font-bold text-white">Place:CMRIT</h2>
+                  <p class="text-xl text-gray-300">
+                    Bock Foods made waves at the National Social Hackathon, earning well-deserved attention among the top 25 teams! <br/>Our innovative drone delivery system aims to redefine food logistics and bring automation to the hospitality industry. 
+                    </p>
+                  
+                  <button class="group flex items-center gap-2 text-bock-purple">
+                    <span>Read More</span>
+                    <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8">
+                  <span id="more3" class="text-white"> Team Members:  <br>
+                    Rakesh S B (CMRIT) <br>
+                    Harsh Diwakar (CMRIT) <br>
+                    Isha Agarwal (CMRIT) <br>
+                    Anagha Srinivas (CMRIT) <br></span>
+              </div>
+            </div>
+          </div>
+          <div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/7.png" alt="Solar Science Workshop" class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-lg">30th Nov</span>
+                  <h2 class="text-4xl md:text-5xl font-bold text-white">Place: Attended Bengaluru Tech Summit <br> 2023</h2>
+                  <p class="text-xl text-gray-300">
+                    The Conference is the soul of Bengaluru Tech Summit, a platform for knowledge exchange, dynamic
+                    discussions, transformative insights, and thought leadership. BTS 2023 has a multi-track conference
+                    that covers the entire gamut of technology space. With individual tracks devoted to IT & Deeptech,
+                    Biotech, Startups, and Global Innovation Alliance. <br> <br> Delegates can plan their three days to make the
+                    most of what the event has to offer. Over 75+ sessions await you at the conference, including
+                    thought-provoking and inspiring keynotes, engaging panel discussions, andinformative
+                    presentations; from 400+ global domain experts. 
+                    </p>
+                  
+                  <button class="group flex items-center gap-2 text-bock-purple">
+                    <span>Read More</span>
+                    <i class="ph ph-arrow-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Expanded Content -->
+              <div x-show="expanded" 
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-4"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   x-transition:leave="transition ease-in duration-300"
+                   x-transition:leave-start="opacity-100 transform translate-y-0"
+                   x-transition:leave-end="opacity-0 transform -translate-y-4"
+                   class="mt-8 border-t border-white/10 pt-8">
+                  <span id="more3" class="text-white"> Team Members:  <br>
+                    Rakesh S B (CMRIT) <br>
+                    Tanaya-Bock Space (RVCE) <br>
+                    Zuhaib-Bock Automotive (RVCE) <br>
+                    Rohit Gupta-Bock Health (CMRIT) <br>
+                    Harsh Kumar-Bock Ai (CMRIT) <br>
+                    Pratham Sinha-Bock Automotive (CMRIT) <br>
+                    Syed Hassan-Bock Chain (CMRIT) <br>
+                    S Abhinav-Bock Ai (CMRIT) <br>
+                    Raghuvansh-Bock Automotive (RVCE) <br>
+                    Mohan Rajeev H V-Bock Foods (CMRIT) <br></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/10.jpg" alt="Solar Science Workshop" class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2023 - 6th November</span>
+                  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">Participated & Certified for Solar <br class="hidden sm:block" />
+                    </h2>
+                  <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                      From humble beginnings to visionary strides! Bock was founded as an MSME on November 6, 2023, under the Ministry of MSME. 🚀 Starting with just six units and a dedicated team of 20-30, we began our journey at CMR Institute of Technology, planting the seeds of innovation and growth. We celebrate our roots and look forward to expanding horizons in the world of sustainable transport!</p>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+          
+          <div class="progress-card rounded-3xl p-1"
+               x-data="{ expanded: false }"
+               @click="expanded = !expanded">
+            <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/8.png" alt="Solar Science Workshop" class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+                
+                <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2024 - 16 to 17th October</span>
+                  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">Participated & Certified for Solar <br class="hidden sm:block" />
+                    Science & Aditya L1 Mission <br class="hidden sm:block" />
+                    by ISRO & <br class="hidden sm:block" />
+                    St Joseph's University</h2>
+                  <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                      Deep tech has the power to transform the world, and we at Bock AI were honored to participate in Nasscom Future Forge 2024 on 16th & 17th October in Bangalore. With the theme ‘Accelerating Deep Tech Growth’, the event brought together trailblazers from across the globe to address critical challenges like infrastructure gaps, regulatory hurdles, and the need for deep tech talent.
+
+<br/>As part of this vibrant ecosystem, we exchanged ideas, explored solutions, and reaffirmed our commitment to driving sustainable innovation. Together, we’re shaping a brighter future from India for the world! 
+                    </p>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtle Background Elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-bock-purple/5 rounded-full blur-3xl"></div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="relative py-16">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <a href="assests/pdfs/progress.pdf" download 
+           class="inline-flex items-center gap-3 bg-gradient-to-r from-electric-blue to-bock-purple p-[2px] rounded-full group transition-all hover:scale-105">
+          <span class="px-8 py-4 bg-[#030014] rounded-full inline-flex items-center gap-2 text-white font-cyber text-lg">
+            <span>Download Complete Journey</span>
+            <i class="ph ph-arrow-down text-xl group-hover:translate-y-1 transition-transform"></i>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+      // Load header and footer with error handling
+      async function loadComponents() {
+        try {
+          // Load header
+          const headerResponse = await fetch('header.html');
+          if (headerResponse.ok) {
+            const headerData = await headerResponse.text();
+            document.getElementById('header-container').innerHTML = headerData;
+          }
+
+          // Load footer
+          const footerResponse = await fetch('footer.html');
+          if (footerResponse.ok) {
+            const footerData = await footerResponse.text();
+            document.getElementById('footer-container').innerHTML = footerData;
+          }
+        } catch (error) {
+          console.error('Error loading components:', error);
+        }
+      }
+
+      // Load components when DOM is ready
+      document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+  </body>
+</html> 
+</html>

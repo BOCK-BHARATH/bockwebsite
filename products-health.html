@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Solutions - BOCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C',
+                        'bock-yellow': '#FFEA00'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.8s ease-in forwards',
+                        'slideUp': 'slideUp 0.6s ease-out forwards',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'rotate-slow': 'rotate-slow 12s linear infinite',
+                        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+                        'heartbeat': 'heartbeat 2s ease-in-out infinite',
+                        'medical-pulse': 'medical-pulse 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(60px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(32, 201, 151, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(32, 201, 151, 0.6)' }
+                        },
+                        'rotate-slow': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        heartbeat: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.1)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.1)' },
+                            '70%': { transform: 'scale(1)' }
+                        },
+                        'medical-pulse': {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'cyber': ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, rgba(32, 201, 151, 0.1), rgba(31, 142, 241, 0.1));
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(45deg, #20C997, #1F8EF1);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .health-card {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .health-card:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+        }
+
+        .health-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32, 201, 151, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .health-card:hover::after {
+            left: 100%;
+        }
+
+        .medical-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(rgba(32, 201, 151, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(32, 201, 151, 0.5) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .tech-spec {
+            background: linear-gradient(135deg, rgba(32, 201, 151, 0.05), rgba(31, 142, 241, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(32, 201, 151, 0.2);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stagger-animation {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+
+        .health-logo {
+            background: linear-gradient(135deg, #20C997, #1F8EF1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .health-card {
+                transform: none;
+            }
+            .health-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#030014] text-white overflow-x-hidden">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Medical Grid Background -->
+        <div class="medical-grid"></div>
+        
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-10 w-64 h-64 bg-bock-green/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-64 h-64 bg-electric-blue/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-bock-green/10 rounded-full blur-3xl animate-rotate-slow"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 text-center">
+            <div class="stagger-animation">
+                <h1 class="font-cyber text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 health-logo animate-pulse-glow">
+                    HEALTH SOLUTIONS
+                </h1>
+            </div>
+            <div class="stagger-animation">
+                <p class="font-raleway text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-8">
+                    Revolutionizing healthcare with automated hospitals and AI-powered medical solutions that increase accessibility and affordability.
+                </p>
+            </div>
+            <div class="stagger-animation">
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-bock-green/20 blur-xl rounded-full"></div>
+                        <button class="relative bg-gradient-to-r from-bock-green to-electric-blue px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                            Explore Healthcare
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Products Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Our <span class="bg-gradient-to-r from-bock-green to-electric-blue bg-clip-text text-transparent">Health Technologies</span>
+                </h2>
+                <p class="font-raleway text-lg text-gray-300 max-w-3xl mx-auto">
+                    Advanced healthcare solutions that combine AI, robotics, and automation to deliver better patient outcomes.
+                </p>
+            </div>
+
+            <!-- Health Product Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20">
+                <!-- Product 1: Automated Hospitals -->
+                <div class="health-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-green to-electric-blue rounded-full flex items-center justify-center mb-6 mx-auto animate-heartbeat">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-green mb-4 text-center">Automated Hospital Systems</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Fully automated hospital infrastructure with robotic assistance for surgery, patient care, and medical operations.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Key Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Robotic surgical systems
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    AI-powered diagnostics
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Automated patient monitoring
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Smart resource management
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-green/20 text-bock-green px-6 py-3 rounded-lg hover:bg-bock-green hover:text-white transition-all duration-300 border border-bock-green/30">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Medical AI -->
+                <div class="health-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-electric-blue to-bock-neural rounded-full flex items-center justify-center mb-6 mx-auto animate-medical-pulse" style="animation-delay: -1s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M17,13H13V17H11V13H7V11H11V7H13V11H17V13Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-electric-blue mb-4 text-center">Medical AI Diagnostics</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Advanced AI algorithms for rapid, accurate medical diagnosis and treatment recommendation systems.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Capabilities:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Medical image analysis
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Symptom pattern recognition
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Treatment optimization
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Drug interaction analysis
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-electric-blue/20 text-electric-blue px-6 py-3 rounded-lg hover:bg-electric-blue hover:text-white transition-all duration-300 border border-electric-blue/30">
+                                Explore AI
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Telemedicine Platform -->
+                <div class="health-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-purple to-bock-green rounded-full flex items-center justify-center mb-6 mx-auto animate-medical-pulse" style="animation-delay: -2s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-purple mb-4 text-center">Telemedicine Platform</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Comprehensive telemedicine solutions enabling remote consultations, monitoring, and healthcare delivery.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Virtual consultations
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Remote patient monitoring
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Digital prescriptions
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Health record management
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-purple/20 text-bock-purple px-6 py-3 rounded-lg hover:bg-bock-purple hover:text-white transition-all duration-300 border border-bock-purple/30">
+                                Access Platform
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Wearable Health Tech -->
+                <div class="health-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-orange to-bock-green rounded-full flex items-center justify-center mb-6 mx-auto animate-medical-pulse" style="animation-delay: -3s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6,2C4.89,2 4,2.89 4,4V8H6V4H18V8H20V4C20,2.89 19.11,2 18,2H6M20,10H4C2.89,10 2,10.89 2,12V22H4V19H20V22H22V12C22,10.89 21.11,10 20,10M8,13H16V17H8V13Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-orange mb-4 text-center">Wearable Health Monitors</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Advanced wearable devices for continuous health monitoring and early disease detection.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Monitoring:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Vital signs tracking
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Blood glucose monitoring
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Sleep pattern analysis
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Emergency alerts
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-orange/20 text-bock-orange px-6 py-3 rounded-lg hover:bg-bock-orange hover:text-white transition-all duration-300 border border-bock-orange/30">
+                                View Devices
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healthcare Benefits Showcase -->
+            <div class="relative">
+                <div class="text-center mb-12">
+                    <h3 class="font-montserrat text-3xl font-bold text-white mb-4">
+                        Healthcare <span class="text-bock-green">Innovation</span>
+                    </h3>
+                    <p class="font-raleway text-gray-300 max-w-2xl mx-auto">
+                        Our health solutions are transforming patient care and medical outcomes worldwide.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Benefit 1 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-green to-electric-blue rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">99% Accuracy</h4>
+                        <p class="text-gray-400 text-sm">AI diagnostic accuracy in medical imaging</p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-electric-blue to-bock-neural rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">50% Faster</h4>
+                        <p class="text-gray-400 text-sm">Reduced diagnosis time with automation</p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-purple to-bock-green rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M11.8,10.9C9.53,10.31 8.8,9.7 8.8,8.75C8.8,7.66 9.81,6.9 11.5,6.9C13.28,6.9 13.94,7.75 14,9H16.21C16.14,7.28 15.09,5.7 13,5.19V3H10V5.16C8.06,5.58 6.5,6.84 6.5,8.77C6.5,11.08 8.41,12.23 11.2,12.9C13.7,13.5 14.2,14.38 14.2,15.31C14.2,16 13.71,17.1 11.5,17.1C9.44,17.1 8.63,16.18 8.5,15H6.32C6.44,17.19 8.08,18.42 10,18.83V21H13V18.85C14.95,18.5 16.5,17.35 16.5,15.3C16.5,12.46 14.07,11.5 11.8,10.9Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">60% Lower Costs</h4>
+                        <p class="text-gray-400 text-sm">Reduced healthcare costs through automation</p>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-orange to-bock-green rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">24/7 Monitoring</h4>
+                        <p class="text-gray-400 text-sm">Continuous patient health monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-bock-green/10 to-electric-blue/10"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-cyber text-3xl sm:text-4xl font-bold text-white mb-6">
+                Transform Healthcare Together
+            </h2>
+            <p class="font-raleway text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join us in revolutionizing healthcare with innovative technology that saves lives and improves patient outcomes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-gradient-to-r from-bock-green to-electric-blue px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                    Partner With Us
+                </button>
+                <button class="border border-bock-green text-bock-green px-8 py-4 rounded-full font-semibold hover:bg-bock-green hover:text-white transition-all duration-300">
+                    Request Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer
+        async function loadComponents() {
+            try {
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all health cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const healthCards = document.querySelectorAll('.health-card');
+            healthCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Products - BOCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C',
+                        'bock-yellow': '#FFEA00'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.8s ease-in forwards',
+                        'slideUp': 'slideUp 0.6s ease-out forwards',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'rotate-slow': 'rotate-slow 20s linear infinite',
+                        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+                        'chain-link': 'chain-link 4s ease-in-out infinite',
+                        'blockchain-pulse': 'blockchain-pulse 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(60px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(108, 92, 231, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(108, 92, 231, 0.6)' }
+                        },
+                        'rotate-slow': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        'chain-link': {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+                            '25%': { transform: 'scale(1.05) rotate(90deg)' },
+                            '50%': { transform: 'scale(1) rotate(180deg)' },
+                            '75%': { transform: 'scale(1.05) rotate(270deg)' }
+                        },
+                        'blockchain-pulse': {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'cyber': ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, rgba(108, 92, 231, 0.1), rgba(155, 89, 182, 0.1));
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(45deg, #6C5CE7, #9B59B6);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .blockchain-card {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blockchain-card:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+        }
+
+        .blockchain-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(108, 92, 231, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .blockchain-card:hover::after {
+            left: 100%;
+        }
+
+        .chain-network {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(108, 92, 231, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(155, 89, 182, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(108, 92, 231, 0.3) 1px, transparent 1px);
+            background-size: 80px 80px, 60px 60px, 40px 40px;
+        }
+
+        .tech-spec {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(155, 89, 182, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stagger-animation {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+
+        .blockchain-logo {
+            background: linear-gradient(135deg, #6C5CE7, #9B59B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .blockchain-card {
+                transform: none;
+            }
+            .blockchain-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        .chain-link {
+            display: inline-block;
+            animation: chain-link 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#030014] text-white overflow-x-hidden">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Chain Network Background -->
+        <div class="chain-network"></div>
+        
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-10 w-64 h-64 bg-bock-indigo/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-64 h-64 bg-bock-purple/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-bock-indigo/10 rounded-full blur-3xl animate-rotate-slow"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 text-center">
+            <div class="stagger-animation">
+                <h1 class="font-cyber text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 blockchain-logo animate-pulse-glow">
+                    BLOCKCHAIN REVOLUTION
+                </h1>
+            </div>
+            <div class="stagger-animation">
+                <p class="font-raleway text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-8">
+                    Revolutionizing the internet with secure, decentralized blockchain technology that ensures transparency, security, and efficiency.
+                </p>
+            </div>
+            <div class="stagger-animation">
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-bock-indigo/20 blur-xl rounded-full"></div>
+                        <button class="relative bg-gradient-to-r from-bock-indigo to-bock-purple px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                            Explore Blockchain
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Products Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Our <span class="bg-gradient-to-r from-bock-indigo to-bock-purple bg-clip-text text-transparent">Blockchain Solutions</span>
+                </h2>
+                <p class="font-raleway text-lg text-gray-300 max-w-3xl mx-auto">
+                    Cutting-edge blockchain technology that powers secure, transparent, and decentralized digital ecosystems.
+                </p>
+            </div>
+
+            <!-- Blockchain Product Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20">
+                <!-- Product 1: Decentralized Platform -->
+                <div class="blockchain-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-indigo to-bock-purple rounded-full flex items-center justify-center mb-6 mx-auto animate-blockchain-pulse">
+                            <div class="chain-link">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L21,5V11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-indigo mb-4 text-center">Decentralized Internet Platform</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            A revolutionary decentralized internet infrastructure that ensures data privacy, security, and user control.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Key Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-indigo rounded-full mr-3"></span>
+                                    Fully decentralized architecture
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-indigo rounded-full mr-3"></span>
+                                    End-to-end encryption
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-indigo rounded-full mr-3"></span>
+                                    User-owned data
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-indigo rounded-full mr-3"></span>
+                                    Zero censorship
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-indigo/20 text-bock-indigo px-6 py-3 rounded-lg hover:bg-bock-indigo hover:text-white transition-all duration-300 border border-bock-indigo/30">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Smart Contracts -->
+                <div class="blockchain-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-purple to-electric-blue rounded-full flex items-center justify-center mb-6 mx-auto animate-blockchain-pulse" style="animation-delay: -1s;">
+                            <div class="chain-link">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-purple mb-4 text-center">Smart Contract Engine</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Advanced smart contract platform enabling automated, trustless transactions and programmable agreements.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Capabilities:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Automated execution
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Multi-language support
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Gas optimization
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Security auditing
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-purple/20 text-bock-purple px-6 py-3 rounded-lg hover:bg-bock-purple hover:text-white transition-all duration-300 border border-bock-purple/30">
+                                Explore Platform
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: DeFi Solutions -->
+                <div class="blockchain-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-electric-blue to-bock-green rounded-full flex items-center justify-center mb-6 mx-auto animate-blockchain-pulse" style="animation-delay: -2s;">
+                            <div class="chain-link">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.8,10.9C9.53,10.31 8.8,9.7 8.8,8.75C8.8,7.66 9.81,6.9 11.5,6.9C13.28,6.9 13.94,7.75 14,9H16.21C16.14,7.28 15.09,5.7 13,5.19V3H10V5.16C8.06,5.58 6.5,6.84 6.5,8.77C6.5,11.08 8.41,12.23 11.2,12.9C13.7,13.5 14.2,14.38 14.2,15.31C14.2,16 13.71,17.1 11.5,17.1C9.44,17.1 8.63,16.18 8.5,15H6.32C6.44,17.19 8.08,18.42 10,18.83V21H13V18.85C14.95,18.5 16.5,17.35 16.5,15.3C16.5,12.46 14.07,11.5 11.8,10.9Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-electric-blue mb-4 text-center">DeFi Financial Suite</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Comprehensive decentralized finance solutions for lending, borrowing, trading, and yield farming.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Services:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Automated market making
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Liquidity pools
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Yield optimization
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Cross-chain bridges
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-electric-blue/20 text-electric-blue px-6 py-3 rounded-lg hover:bg-electric-blue hover:text-white transition-all duration-300 border border-electric-blue/30">
+                                Access DeFi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: NFT Marketplace -->
+                <div class="blockchain-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-green to-bock-orange rounded-full flex items-center justify-center mb-6 mx-auto animate-blockchain-pulse" style="animation-delay: -3s;">
+                            <div class="chain-link">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-green mb-4 text-center">NFT Marketplace</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Next-generation NFT marketplace with advanced features for creators, collectors, and investors.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Low transaction fees
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Creator royalties
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Advanced analytics
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Fractional ownership
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-green/20 text-bock-green px-6 py-3 rounded-lg hover:bg-bock-green hover:text-white transition-all duration-300 border border-bock-green/30">
+                                Visit Marketplace
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain Benefits Showcase -->
+            <div class="relative">
+                <div class="text-center mb-12">
+                    <h3 class="font-montserrat text-3xl font-bold text-white mb-4">
+                        Why Choose <span class="text-bock-indigo">BOCK Chain</span>
+                    </h3>
+                    <p class="font-raleway text-gray-300 max-w-2xl mx-auto">
+                        Experience the next generation of blockchain technology with enhanced security, scalability, and sustainability.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Benefit 1 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-indigo to-bock-purple rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Ultra Secure</h4>
+                        <p class="text-gray-400 text-sm">Military-grade encryption and decentralized security</p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-purple to-electric-blue rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Lightning Fast</h4>
+                        <p class="text-gray-400 text-sm">High throughput with minimal transaction costs</p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-electric-blue to-bock-green rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Eco-Friendly</h4>
+                        <p class="text-gray-400 text-sm">Energy-efficient consensus mechanism</p>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-green to-bock-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H9V3H15.5L20,7.5V9M21,11H15L13.5,7.5C13.1,6.9 12.4,6.5 11.7,6.5C10.8,6.5 10.1,7.1 10,8L11.8,13L6,16V18H8.2L13.7,15.1L16.1,22H18L21,11M10,11.5L7,23H5L8,11.5L10,11.5Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Scalable</h4>
+                        <p class="text-gray-400 text-sm">Infinite scalability for global adoption</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-bock-indigo/10 to-bock-purple/10"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-cyber text-3xl sm:text-4xl font-bold text-white mb-6">
+                Join the Blockchain Revolution
+            </h2>
+            <p class="font-raleway text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Be part of the decentralized future with BOCK Chain's cutting-edge blockchain technology.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-gradient-to-r from-bock-indigo to-bock-purple px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                    Start Building
+                </button>
+                <button class="border border-bock-indigo text-bock-indigo px-8 py-4 rounded-full font-semibold hover:bg-bock-indigo hover:text-white transition-all duration-300">
+                    View Documentation
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer
+        async function loadComponents() {
+            try {
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all blockchain cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const blockchainCards = document.querySelectorAll('.blockchain-card');
+            blockchainCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BOCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for mixed modern design -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.5s ease-in forwards',
+                        'slideIn': 'slideIn 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        }
+                    },
+                    fontFamily: {
+                    'poppins': ['Poppins', 'sans-serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'raleway': ['Raleway', 'sans-serif'],
+                    'space': ['Space Grotesk', 'sans-serif'],
+                    'cyber': ['Orbitron', 'sans-serif']
+                }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(to right, rgba(31, 142, 241, 0.1), rgba(108, 92, 231, 0.1));
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(to right, #1F8EF1, #6C5CE7);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Animation for blob elements */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        /* Add missing float animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Prevent horizontal scroll on small devices */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Ensure proper overflow handling on mobile */
+        @media (max-width: 640px) {
+            .overflow-hidden {
+                overflow-x: hidden;
+            }
+            
+            /* Improve mobile text spacing */
+            .tracking-wide {
+                letter-spacing: 0.1em;
+            }
+            
+            /* Fix mobile card heights */
+            .min-h-card {
+                min-height: 200px;
+            }
+            
+            /* Better mobile padding */
+            .mobile-px-safe {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Improved gradient borders for mobile */
+            .gradient-border::before {
+                padding: 1px;
+            }
+        }
+        
+        /* Better responsive font sizing */
+        @media (max-width: 375px) {
+            .text-responsive-xs {
+                font-size: 1.5rem;
+            }
+            
+            .text-responsive-sm {
+                font-size: 1.125rem;
+            }
+        }
+        
+        /* Better card responsiveness */
+        @media (max-width: 768px) {
+            .card-grid-mobile {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .card-padding-mobile {
+                padding: 1rem;
+            }
+        }
+        
+        /* Improved mobile layout */
+        @media (max-width: 1024px) {
+            .lg\:col-span-1 {
+                grid-column: span 1 / span 1;
+            }
+        }
+        
+        /* Enhanced responsive text */
+        @media (max-width: 480px) {
+            .text-xl { font-size: 1.125rem; }
+            .text-2xl { font-size: 1.25rem; }
+            .text-3xl { font-size: 1.5rem; }
+        }
+        
+        /* Better mobile transitions */
+        @media (prefers-reduced-motion: no-preference) {
+            .group:hover .transform {
+                transition: transform 0.3s ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#030014] text-white">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute -top-8 right-20 w-72 h-72 bg-electric-blue rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-bock-indigo rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-bock-purple rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16">
+            <div class="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+                <span class="relative inline-block font-cyber text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-500 tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] lg:tracking-[0.3em] uppercase font-light cursor-pointer
+                            border-t-2 border-b-2 border-transparent
+                            hover:border-t-current hover:border-b-current
+                            transition-[border-width,color] duration-500 ease-in-out
+                            px-2 sm:px-4">
+                    ABOUT US
+                </span>
+                <p class="font-raleway text-lg text-gray-300 max-w-3xl mx-auto mt-4">At the core of BOCK lies a commitment to innovation that transforms lives and shapes the future.</p>
+            </div>
+
+            <!-- Cards Section -->
+            <div class="max-w-6xl mx-auto px-2 sm:px-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 mb-12 sm:mb-16 md:mb-20 lg:mb-24">
+                    <!-- Card 1 -->
+                    <div class="group w-full">
+                        <div class="h-full rounded-2xl p-1 bg-gradient-to-br from-electric-blue via-bock-purple to-bock-indigo">
+                            <div class="h-full rounded-xl p-4 sm:p-6 lg:p-8 bg-[#030014] backdrop-blur-xl hover:bg-black/40 transition-all duration-500 min-h-[280px] sm:min-h-[320px]">
+                                <div class="relative z-10 h-full flex flex-col">
+                                    <div class="overflow-hidden mb-3 sm:mb-4 lg:mb-6">
+                                        <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-poppins bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-300">
+                                            Empowering Humanity
+                                        </h3>
+                                    </div>
+                                    <div class="h-px w-full bg-gradient-to-r from-electric-blue to-bock-purple mb-3 sm:mb-4 lg:mb-6"></div>
+                                    <p class="text-sm sm:text-base lg:text-lg text-gray-300/90 leading-relaxed font-inter flex-grow">
+                                        BOCK is driven by a singular vision: to improve lives globally through groundbreaking technology. Our eight subsidiary companies each tackle specific challenges, from sustainable transportation to affordable food and healthcare automation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group w-full">
+                        <div class="h-full rounded-2xl p-1 bg-gradient-to-br from-bock-purple via-bock-indigo to-electric-blue">
+                            <div class="h-full rounded-xl p-4 sm:p-6 lg:p-8 bg-[#030014] backdrop-blur-xl hover:bg-black/40 transition-all duration-500 min-h-[280px] sm:min-h-[320px]">
+                                <div class="relative z-10 h-full flex flex-col">
+                                    <div class="overflow-hidden mb-3 sm:mb-4 lg:mb-6">
+                                        <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-poppins bg-gradient-to-r from-bock-purple to-bock-indigo bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-300">
+                                            Driven by Purpose
+                                        </h3>
+                                    </div>
+                                    <div class="h-px w-full bg-gradient-to-r from-bock-purple to-bock-indigo mb-3 sm:mb-4 lg:mb-6"></div>
+                                    <p class="text-sm sm:text-base lg:text-lg text-gray-300/90 leading-relaxed font-inter flex-grow">
+                                        At BOCK, we're centered around societal upliftment. Technology has the power to solve pressing global problems, and we're committed to harnessing its potential for good, beyond just profit.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group w-full md:col-span-2 lg:col-span-1">
+                        <div class="h-full rounded-2xl p-1 bg-gradient-to-br from-bock-indigo via-electric-blue to-bock-purple">
+                            <div class="h-full rounded-xl p-4 sm:p-6 lg:p-8 bg-[#030014] backdrop-blur-xl hover:bg-black/40 transition-all duration-500 min-h-[280px] sm:min-h-[320px]">
+                                <div class="relative z-10 h-full flex flex-col">
+                                    <div class="overflow-hidden mb-3 sm:mb-4 lg:mb-6">
+                                        <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-poppins bg-gradient-to-r from-bock-indigo to-electric-blue bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-300">
+                                            A Brighter Future
+                                        </h3>
+                                    </div>
+                                    <div class="h-px w-full bg-gradient-to-r from-bock-indigo to-electric-blue mb-3 sm:mb-4 lg:mb-6"></div>
+                                    <p class="text-sm sm:text-base lg:text-lg text-gray-300/90 leading-relaxed font-inter flex-grow">
+                                        Together, we're building a better future. Each subsidiary contributes to our 20-year vision of addressing critical societal needs, driven by ethics, sustainability, and inclusivity.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subsidiaries Section -->
+            <div class="max-w-5xl mx-auto px-2 sm:px-0">
+                <h2 class="font-montserrat text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white px-4">
+                    Our Subsidiaries: <span class="bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent">Addressing Global Challenges</span>
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Left Column -->
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-electric-blue/20 hover:border-electric-blue/50 transition-all">
+                            <h3 class="font-space text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-electric-blue">Bock Automotive</h3>
+                            <p class="font-raleway text-sm sm:text-base text-gray-300">Developing self-powered vehicles that eliminate pollution and dependence on fossil fuels.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-orange/20 hover:border-bock-orange/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-orange">Bock Foods</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Building an ecosystem to provide affordable, nutritious food to everyone, everywhere.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-purple/20 hover:border-bock-purple/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-purple">Bock Space</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Pioneering space research and exploration technologies for humanity's future.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-green/20 hover:border-bock-green/50 transition-all lg:hidden">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-green">Bock Health</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Pioneering automated hospitals to increase accessibility and affordability of healthcare.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-yellow/20 hover:border-bock-yellow/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-yellow">Bock Institute</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Advanced educational programs and research initiatives for technological innovation and skill development.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-neural/20 hover:border-bock-neural/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-neural">Bock AI</h3>
+                            <p class="text-sm sm:text-base text-gray-300">The backbone of BOCK, providing automation solutions across all our subsidiaries.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-green/20 hover:border-bock-green/50 transition-all hidden lg:block">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-green">Bock Health</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Pioneering automated hospitals to increase accessibility and affordability of healthcare.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-indigo/20 hover:border-bock-indigo/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-indigo">Bock Chain</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Revolutionizing the internet with a secure, decentralized blockchain platform.</p>
+                        </div>
+                    
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-bock-red/20 hover:border-bock-red/50 transition-all">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-bock-red">Bock Force</h3>
+                            <p class="text-sm sm:text-base text-gray-300">Advanced defense technologies ensuring global security and protecting against threats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-electric-blue/5 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-bock-purple/5 rounded-full blur-3xl animate-float [animation-delay:-3s]"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                 <h2 class="font-cyber text-2xl sm:text-3xl font-bold text-white mb-8 sm:mb-12">Get in Touch</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                <!-- Contact Info -->
+
+                <div class="space-y-6 sm:space-y-8">
+                    
+                    <div class="gradient-border rounded-xl p-4 sm:p-6 backdrop-blur-lg bg-black/20 group hover:transform hover:scale-105 transition-all duration-300">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="p-2 rounded-lg bg-electric-blue/10 flex-shrink-0">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg sm:text-xl font-semibold text-electric-blue mb-2 font-space">Our Location</h3>
+                                <address class="text-sm sm:text-base text-gray-300 font-raleway not-italic leading-relaxed">
+                                    Incubation Center, CMRIT College,Kundalahalli Colony, <br>Brookefield,
+                                    Bengaluru, Karnataka 560037
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-border rounded-xl p-4 sm:p-6 backdrop-blur-lg bg-black/20 group hover:transform hover:scale-105 transition-all duration-300">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="p-2 rounded-lg bg-bock-purple/10 flex-shrink-0">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-bock-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg sm:text-xl font-semibold text-bock-purple mb-2 font-poppins">Email Us</h3>
+                                <p class="text-sm sm:text-base text-gray-300 font-inter break-all">info@bockbharath.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-border rounded-xl p-4 sm:p-6 backdrop-blur-lg bg-black/20 group hover:transform hover:scale-105 transition-all duration-300">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="p-2 rounded-lg bg-bock-indigo/10 flex-shrink-0">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-bock-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg sm:text-xl font-semibold text-bock-indigo mb-2 font-poppins">Call Us</h3>
+                                <p class="text-sm sm:text-base text-gray-300 font-inter">+91 6360288456</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="gradient-border rounded-xl overflow-hidden backdrop-blur-lg bg-black/20 h-64 sm:h-80 lg:h-96 w-full">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15552.32187932246!2d77.7111165!3d12.9667025!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13cf55cb02bb%3A0xa625b081cb4d7173!2sOctakaigon%20Bock%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1707748261858!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        class="w-full h-full">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer with error handling
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                // Load footer
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+</html>

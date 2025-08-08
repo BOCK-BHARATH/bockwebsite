@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOCK - Empowering the World!</title>
+    <!-- NOTE: For production, replace CDN with installed Tailwind CSS -->
+    <!-- See: https://tailwindcss.com/docs/installation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for mixed modern design -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari&family=Sahitya&family=Tiro+Devanagari+Marathi&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    
+    <!-- Custom Styles for Business Carousel -->
+    <link rel="stylesheet" href="styleindex.css">
+
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        noto: ['"Noto Serif Devanagari"', 'serif'],
+                        sahitya: ['"Sahitya"', 'serif'],
+                        tiro: ['"Tiro Devanagari Marathi"', 'serif'],
+                        montserrat: ['"Montserrat"', 'sans-serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                        raleway: ['"Raleway"', 'sans-serif'],
+                        space: ['"Space Grotesk"', 'sans-serif'],
+                        cyber: ['"Orbitron"', 'sans-serif'],
+                    },
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C',
+                        'bock-yellow': '#FFEA00'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.5s ease-in forwards',
+                        'slideIn': 'slideIn 0.5s ease-out forwards',
+                        'slideUp': 'slideUp 0.6s ease-out forwards',
+                        'slideDown': 'slideDown 0.6s ease-out forwards',
+                        'scaleIn': 'scaleIn 0.5s ease-out forwards',
+                        'rotateIn': 'rotateIn 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 7s infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'morphing': 'morphing 8s ease-in-out infinite',
+                        'floating-slow': 'floating-slow 4s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        rotateIn: {
+                            '0%': { opacity: '0', transform: 'rotate(-10deg) scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'rotate(0deg) scale(1)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px currentColor' },
+                            '100%': { boxShadow: '0 0 20px currentColor, 0 0 30px currentColor' }
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        morphing: {
+                            '0%, 100%': { borderRadius: '20px', transform: 'rotate(0deg)' },
+                            '25%': { borderRadius: '50px', transform: 'rotate(1deg)' },
+                            '50%': { borderRadius: '30px', transform: 'rotate(-1deg)' },
+                            '75%': { borderRadius: '40px', transform: 'rotate(0.5deg)' }
+                        },
+                        'floating-slow': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-10px) rotate(1deg)' },
+                            '66%': { transform: 'translateY(5px) rotate(-1deg)' }
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Animation for blob elements */
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        /* Add missing float animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .carousel .list {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel .list .item {
+            position: absolute;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            transition: left 0.5s, opacity 0.5s, width 0.5s;
+        }
+
+        .carousel .list .item:nth-child(2) {
+            z-index: 10;
+            transform: translateX(0);
+        }
+
+        .carousel .list .item img {
+            width: 40%;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: right 1.5s;
+            max-height: 300px;
+            object-fit: contain;
+        }
+
+        .carousel .list .item .introduce {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .carousel .list .item:nth-child(2) .introduce {
+            opacity: 1;
+            pointer-events: auto;
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            transition: opacity 0.5s;
+        }
+
+        .carousel .list .item .introduce .title {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .carousel .list .item .introduce .topic {
+            font-size: 2.5em;
+            font-weight: 500;
+            color: #1F8EF1;
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .carousel .list .item .introduce .des {
+            font-size: 0.9rem;
+            color: #e9dac1;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .carousel .list .item .introduce .seeMore {
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel .list .item .introduce .seeMore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(31, 142, 241, 0.3);
+        }
+
+        /* Navigation arrows */
+        .arrows {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .arrows button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(31, 142, 241, 0.3);
+            color: #1F8EF1;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .arrows button:hover {
+            background: rgba(31, 142, 241, 0.2);
+            border-color: #1F8EF1;
+        }
+
+        /* Enhanced Carousel Styles with Modern Animations */
+        .carousel-enhanced {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+
+        /* Removed background card animation */
+
+        .carousel-enhanced .list {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-enhanced .list .item {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            padding: 0 20px;
+        }
+
+        /* Removed item background styling */
+
+        .carousel-enhanced .list .item:nth-child(2) {
+            z-index: 10;
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .carousel-enhanced .list .item img {
+            width: 40%;
+            position: relative;
+            margin: 0;
+            transition: all 1.5s ease;
+            max-height: 350px;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            animation: floating-slow 4s ease-in-out infinite;
+        }
+
+        .carousel-enhanced .list .item:nth-child(2) img {
+            animation: floating-slow 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+        }
+
+        .carousel-enhanced .list .item .introduce {
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .carousel-enhanced .list .item:nth-child(2) .introduce {
+            opacity: 1;
+            pointer-events: auto;
+            width: 55%;
+            position: relative;
+            margin: 0;
+            text-align: left;
+            padding: 10px 20px;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            animation: slideDown 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .carousel-enhanced .list .item:nth-child(2) .category-badge {
+            opacity: 1;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .carousel-enhanced .list .item .introduce .title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            animation: slideIn 0.8s ease-out forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .carousel-enhanced .list .item .introduce .topic {
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: scaleIn 1s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .carousel-enhanced .list .item .introduce .des {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin: 1.5rem 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+
+        .carousel-enhanced .list .item:nth-child(2) .introduce .title,
+        .carousel-enhanced .list .item:nth-child(2) .introduce .topic,
+        .carousel-enhanced .list .item:nth-child(2) .introduce .des {
+            opacity: 1;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1.5rem 0;
+            animation: slideUp 1.2s ease-out forwards;
+            animation-delay: 1s;
+            opacity: 0;
+        }
+
+        .feature-tag {
+            background: rgba(31, 142, 241, 0.2);
+            color: #1F8EF1;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(31, 142, 241, 0.3);
+            animation: scaleIn 0.4s ease-out forwards;
+            animation-delay: calc(1.2s + var(--delay, 0) * 0.1s);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .feature-tag:hover {
+            transform: scale(1.05);
+            background: rgba(31, 142, 241, 0.3);
+            box-shadow: 0 4px 12px rgba(31, 142, 241, 0.2);
+        }
+
+        .carousel-enhanced .list .item:nth-child(2) .features,
+        .carousel-enhanced .list .item:nth-child(2) .feature-tag {
+            opacity: 1;
+        }
+
+        .carousel-enhanced .list .item .introduce .seeMore {
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(31, 142, 241, 0.3);
+        }
+
+        .carousel-enhanced .list .item .introduce .seeMore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(31, 142, 241, 0.4);
+        }
+
+        /* Enhanced Navigation */
+        .arrows-enhanced {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 20;
+            pointer-events: none;
+            width: 100%;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(31, 142, 241, 0.15);
+            border: 2px solid rgba(31, 142, 241, 0.4);
+            color: #1F8EF1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: rgba(31, 142, 241, 0.3);
+            border-color: #1F8EF1;
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(31, 142, 241, 0.4);
+        }
+
+        /* Removed slide indicators as requested */
+
+        /* Enhanced Products Grid with Modern Animations - COMMENTED OUT */
+        /*
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: scaleIn 0.6s ease-out forwards;
+            animation-delay: calc(var(--index, 0) * 0.1s);
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover::after {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: currentColor;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(31, 142, 241, 0.2);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .product-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 12px;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: currentColor;
+        }
+
+        .product-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Product Filter Styles with Animations */
+        .product-filter {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: slideUp 0.5s ease-out forwards;
+            animation-delay: calc(var(--filter-index, 0) * 0.1s);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-filter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-filter:hover::before {
+            left: 100%;
+        }
+
+        .product-filter:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-filter.active {
+            background: rgba(31, 142, 241, 0.2);
+            border-color: rgba(31, 142, 241, 0.3);
+            color: #1F8EF1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(31, 142, 241, 0.2);
+        }
+
+        .product-filter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .filter-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 2rem;
+        }
+
+        /* Product Meta */
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .product-status {
+            background: rgba(32, 201, 151, 0.2);
+            color: #20C997;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(32, 201, 151, 0.3);
+        }
+
+        .product-launch {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Product Features */
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .feature-pill {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Filter Animation */
+        .product-card {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.4s ease;
+        }
+
+        .product-card.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+
+        /* Comprehensive Responsive Design */
+        @media (max-width: 1024px) {
+            .carousel-enhanced {
+                height: 550px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-enhanced {
+                height: 650px;
+                margin-top: 1rem;
+            }
+
+            .carousel-enhanced .list .item {
+                flex-direction: column;
+            }
+
+            .carousel-enhanced .list .item img {
+                width: 80%;
+                max-height: 250px;
+                position: relative;
+                margin: 20px auto 0;
+            }
+
+            .carousel-enhanced .list .item:nth-child(2) .introduce {
+                width: 90%;
+                margin: 0 auto;
+                text-align: center;
+                position: relative;
+                padding: 10px;
+            }
+
+            .carousel-enhanced .list .item .introduce .topic {
+                font-size: 2em;
+                margin-bottom: 0.5rem;
+            }
+
+            .carousel-enhanced .list .item .introduce .title {
+                font-size: 1.3em;
+                margin-bottom: 0.3rem;
+            }
+
+            .carousel-enhanced .list .item .introduce .des {
+                font-size: 0.85rem;
+                margin: 1rem 0;
+            }
+
+            .arrows-enhanced {
+                top: 30%;
+                padding: 0 15px;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 16px;
+            }
+
+            .product-card {
+                padding: 20px;
+            }
+
+            .product-filter {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .filter-dot {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-enhanced {
+                height: 600px;
+            }
+
+            .carousel-enhanced .list .item img {
+                width: 90%;
+                max-height: 180px;
+                position: relative;
+                margin: 10px auto 0;
+            }
+
+            .carousel-enhanced .list .item:nth-child(2) .introduce {
+                width: 90%;
+                margin: 0 auto;
+                padding: 10px;
+                position: relative;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            .carousel-enhanced .list .item .introduce .topic {
+                font-size: 1.8em;
+            }
+
+            .carousel-enhanced .list .item .introduce .title {
+                font-size: 1.2em;
+            }
+
+            .carousel-enhanced .list .item .introduce .des {
+                font-size: 0.8rem;
+                line-height: 1.5;
+                max-height: 80px;
+                overflow-y: auto;
+                margin: 0.5rem 0;
+            }
+
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+            }
+
+            .arrows-enhanced {
+                top: 25%;
+                padding: 0 10px;
+            }
+
+            .features {
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .feature-tag {
+                font-size: 0.65rem;
+                padding: 2px 8px;
+            }
+
+            .carousel-enhanced .list .item .introduce .seeMore {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .product-card {
+                padding: 16px;
+            }
+
+            .product-header {
+                margin-bottom: 12px;
+            }
+
+            .product-title {
+                font-size: 1rem;
+            }
+
+            .product-description {
+                font-size: 0.85rem;
+            }
+
+            .product-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .product-status {
+                font-size: 0.65rem;
+            }
+
+            .product-launch {
+                font-size: 0.75rem;
+            }
+
+            .feature-pill {
+                font-size: 0.65rem;
+                padding: 3px 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-enhanced {
+                height: 500px;
+                border-radius: 15px;
+            }
+
+            .carousel-enhanced .list .item {
+                flex-direction: column;
+            }
+
+            .carousel-enhanced .list .item img {
+                width: 75%;
+                max-height: 160px;
+                margin: 10px auto 0;
+            }
+
+            .carousel-enhanced .list .item:nth-child(2) .introduce {
+                width: 90%;
+                margin: 0 auto;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .carousel-enhanced .list .item .introduce .topic {
+                font-size: 1.5em;
+                line-height: 1;
+            }
+
+            .carousel-enhanced .list .item .introduce .title {
+                font-size: 1em;
+            }
+
+            .carousel-enhanced .list .item .introduce .des {
+                font-size: 0.75rem;
+                line-height: 1.4;
+                margin: 0.8rem 0;
+            }
+
+            .category-badge {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .badge-dot {
+                width: 6px;
+                height: 6px;
+                margin-right: 6px;
+            }
+
+            .arrows-enhanced {
+                bottom: 10px;
+                padding: 8px 15px;
+                gap: 12px;
+            }
+
+            .nav-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .slide-indicators {
+                gap: 4px;
+            }
+
+            .indicator {
+                width: 5px;
+                height: 5px;
+            }
+
+            .product-filter {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+                border-radius: 20px;
+            }
+
+            .filter-dot {
+                width: 5px;
+                height: 5px;
+                margin-right: 6px;
+            }
+        }
+
+        /* Animation delays for staggered effects */
+        .feature-tag:nth-child(1) {
+            --delay: 0;
+        }
+
+        .feature-tag:nth-child(2) {
+            --delay: 1;
+        }
+
+        .feature-tag:nth-child(3) {
+            --delay: 2;
+        }
+
+        .feature-tag:nth-child(4) {
+            --delay: 3;
+        }
+
+        .product-filter:nth-child(1) {
+            --filter-index: 0;
+        }
+
+        .product-filter:nth-child(2) {
+            --filter-index: 1;
+        }
+
+        .product-filter:nth-child(3) {
+            --filter-index: 2;
+        }
+
+        .product-filter:nth-child(4) {
+            --filter-index: 3;
+        }
+
+        .product-card:nth-child(1) {
+            --index: 0;
+        }
+
+        .product-card:nth-child(2) {
+            --index: 1;
+        }
+
+        .product-card:nth-child(3) {
+            --index: 2;
+        }
+
+        .product-card:nth-child(4) {
+            --index: 3;
+        }
+
+        .product-card:nth-child(5) {
+            --index: 4;
+        }
+
+        .product-card:nth-child(6) {
+            --index: 5;
+        }
+
+        .product-card:nth-child(7) {
+            --index: 6;
+        }
+
+        .product-card:nth-child(8) {
+            --index: 7;
+        }
+        */
+
+        /* Footer Separator Styles */
+        .footer-separator {
+            padding: 2rem 0;
+            background: linear-gradient(180deg, rgba(11, 31, 51, 0.8) 0%, rgba(3, 0, 20, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .separator-line {
+            max-width: 7xl;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .separator-gradient {
+            height: 2px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(31, 142, 241, 0.3) 10%,
+                    rgba(31, 142, 241, 0.8) 25%,
+                    rgba(155, 89, 182, 0.8) 50%,
+                    rgba(32, 201, 151, 0.8) 75%,
+                    rgba(255, 165, 0, 0.3) 90%,
+                    transparent 100%);
+            border-radius: 2px;
+            animation: shimmer 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(31, 142, 241, 0.3);
+        }
+
+        .separator-line::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(31, 142, 241, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Enhanced Products Section with 3D Cards */
+        .products-showcase {
+            perspective: 1000px;
+            padding: 2rem 0;
+        }
+
+        .product-card-3d {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideUp 0.8s ease-out forwards;
+            animation-delay: calc(var(--index, 0) * 0.15s);
+            opacity: 0;
+            transform: translateY(40px) rotateX(10deg);
+        }
+
+        .product-card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                    rgba(31, 142, 241, 0.1) 0%,
+                    rgba(155, 89, 182, 0.05) 50%,
+                    rgba(32, 201, 151, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .product-card-3d::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    transparent 0%,
+                    rgba(31, 142, 241, 0.3) 25%,
+                    rgba(155, 89, 182, 0.3) 50%,
+                    rgba(32, 201, 151, 0.3) 75%,
+                    transparent 100%);
+            background-size: 400% 400%;
+            animation: shimmer 4s ease-in-out infinite;
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card-3d:hover::before {
+            opacity: 1;
+        }
+
+        .product-card-3d:hover::after {
+            opacity: 1;
+        }
+
+        .product-card-3d:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.02);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(31, 142, 241, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card-3d.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        .product-header-3d {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-icon-3d {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 16px;
+            box-shadow: 0 0 20px currentColor;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .product-title-3d {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: currentColor;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-category-3d {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .product-status-3d {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(32, 201, 151, 0.2);
+            color: #20C997;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(32, 201, 151, 0.3);
+            margin-bottom: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .product-status-3d::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: currentColor;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        .product-description-3d {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 16px 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-features-3d {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .feature-pill-3d {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out forwards;
+            animation-delay: calc(1s + var(--pill-index, 0) * 0.1s);
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .feature-pill-3d:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card-3d.visible .feature-pill-3d {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-launch-3d {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Interactive Product Filters */
+        .filter-container-3d {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            perspective: 1000px;
+        }
+
+        .filter-wrapper-3d {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-filter-3d {
+            padding: 12px 20px;
+            border-radius: 40px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: slideDown 0.6s ease-out forwards;
+            animation-delay: calc(var(--filter-index, 0) * 0.1s);
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .product-filter-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-filter-3d:hover::before {
+            left: 100%;
+        }
+
+        .product-filter-3d:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-filter-3d.active {
+            background: linear-gradient(135deg, rgba(31, 142, 241, 0.3) 0%, rgba(155, 89, 182, 0.3) 100%);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(31, 142, 241, 0.3);
+        }
+
+        .product-filter-3d.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-pill-3d:nth-child(1) {
+            --pill-index: 0;
+        }
+
+        .feature-pill-3d:nth-child(2) {
+            --pill-index: 1;
+        }
+
+        .feature-pill-3d:nth-child(3) {
+            --pill-index: 2;
+        }
+
+        .feature-pill-3d:nth-child(4) {
+            --pill-index: 3;
+        }
+    </style>
+</head>
+
+<body class="bg-[#030014]">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen max-h-[800px] overflow-hidden">
+        <!-- Background Video -->
+        <video src="assests/techvid.mp4" muted loop autoplay
+            class="absolute inset-0 w-full h-full object-cover z-0"></video>
+
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[#030014] opacity-80"></div>
+            <div
+                class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+            </div>
+            <div
+                class="absolute top-0 -right-4 w-72 h-72 bg-electric-blue rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute -bottom-8 left-20 w-72 h-72 bg-bock-purple rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16">
+            <div class="text-center mb-8 sm:mb-12">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+                    WELCOME TO<br>
+                    <div class="flex justify-center items-center gap-4">
+                        <span class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white font-cyber tracking-wider"
+                            style="color: transparent; -webkit-text-stroke: 2px white;">BOCK</span>
+                    </div>
+                </h1>
+
+                <h3 class="text-lg sm:text-xl md:text-2xl text-white/90 mb-8">
+                    Empowering <span id="changing-word" class="text-electric-blue font-semibold">People</span>
+                </h3>
+
+                <style>
+                    @keyframes fadeInOut {
+
+                        0%,
+                        100% {
+                            opacity: 0;
+                            transform: translateY(10px);
+                        }
+
+                        20%,
+                        80% {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    #changing-word {
+                        display: inline-block;
+                        animation: fadeInOut 2s ease-in-out infinite;
+                    }
+                </style>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const words = ['People', 'World', 'Society'];
+                        const changingWord = document.getElementById('changing-word');
+                        let currentIndex = 0;
+
+                        setInterval(function () {
+                            currentIndex = (currentIndex + 1) % words.length;
+                            changingWord.style.opacity = 0;
+                            changingWord.style.transform = 'translateY(10px)';
+
+                            setTimeout(function () {
+                                changingWord.textContent = words[currentIndex];
+                                changingWord.style.opacity = 1;
+                                changingWord.style.transform = 'translateY(0)';
+                            }, 500);
+                        }, 2000);
+                    });
+                </script>
+
+                <div class="max-w-4xl mx-auto">
+                    <div id="sanskrit-container" class="flex flex-col items-center space-y-4">
+
+                        <div class="text-2xl sm:text-3xl md:text-4xl text-white font-bold"
+                            style="font-family: 'Noto Serif Devanagari', serif;">
+                            वसुधैव कुटुम्बकम्
+                        </div>
+
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                            style="font-family: 'Sahitya', serif;">
+                            असतो माँ सद-गमय
+                        </div>
+
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                            style="font-family: 'Tiro Devanagari Marathi', serif;">
+                            तमसो माँ ज्योतिर्-गमय
+                        </div>
+
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                            style="font-family: 'Sahitya', serif;">
+                            मृत्योर्-माँ अमृतं गमय
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <style>
+                    .sanskrit-text {
+                        animation: fadeIn 1s ease-out forwards;
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+
+                    #sanskrit-container div:nth-child(1) {
+                        animation-delay: 0s;
+                    }
+
+                    #sanskrit-container div:nth-child(2) {
+                        animation-delay: 0.5s;
+                    }
+
+                    #sanskrit-container div:nth-child(3) {
+                        animation-delay: 1s;
+                    }
+
+                    #sanskrit-container div:nth-child(4) {
+                        animation-delay: 1.5s;
+                    }
+
+                    @keyframes fadeIn {
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                </style>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Businesses Section -->
+    <section class="business-section">
+        <div class="carousel">
+            <div class="suri-title">
+                <a class="link-s link--surinami" href="#"><span data-letters-l="O u r" data-letters-r="I m p a c t">O u r  I m p a c t</span></a>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <img src="assests/logos/Automative.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">AUTOMOTIVE</div>
+                        <div class="des">
+                            We have built a concept vehicle called a Self-Powered Vehicle (SPVs) to solve all these. The
+                            energy required is met by just running the vehicle itself, and 100% of the energy is renewable
+                            sources sounds crazy, but we have already figured it out.    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/Foods.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">FOODS</div>
+                        <div class="des">
+                            We at BockFoods have a mission of providing affordable and nutritious food to all. You will be
+                            able to get food that is much more nutritious and tasty at half of the price that you are paying
+                            right now.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/Space.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">SPACE</div>
+                        <div class="des">
+                            Bock Space is a space research organization managing 4 bodies under it. Bock Space will be a
+                            robust system for space technology that is highly ambitious in taking mankind towards
+                            advancements.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/AI.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">AI</div>
+                        <div class="des">
+                            It is the backbone of Bock, much automation work of other subsidiary companies is done at Bock
+                            AI. Starting with the building of Autonomous Vehicle Technology for the automobiles that were
+                            developed at Bock Automotive, we then move on to building Autonomous Drone Delivery for the
+                            Drone Delivery built at Bock Foods.    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/health.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">HEALTH</div>
+                        <div class="des">
+                            At Bock Health, we are revolutionizing the healthcare landscape by the introduction of Automated
+                            Hospitals. Imagine a world where you walk into hospitals where no human intervention is there
+                            (including the Doctors). Everything will be replaced by AI and the whole hospital will be
+                            automated.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/Chain.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">CHAIN</div>
+                        <div class="des">
+                            At Bock Chain, we are building our own blockchain and will revolutionize the internet landscape
+                            by addressing its inherent challenges. Our focus lies in empowering users through
+                            decentralization, ensuring the authenticity of information via blockchain technology.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/health.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">INSTITUTE</div>
+                        <div class="des">
+                            Advanced educational programs and research initiatives for technological innovation and skill development.
+                            COMING SOON
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="assests/logos/Space.svg">
+                    <div class="introduce">
+                        <div class="title">BOCK</div>
+                        <div class="topic">FORCE</div>
+                        <div class="des">
+                            Advanced defense technologies ensuring global security and protecting against threats.
+                            COMING SOON
+                        </div>
+                    </div>
+                </div>
+                <div class="arrows">
+                <button id="prev">‹</button>
+                <button id="next">›</button>
+            </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Company Metrics Section -->
+    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-space-navy to-[#030014]">
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Animated background elements -->
+            <div class="absolute top-20 left-20 w-32 h-32 bg-electric-blue/10 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-40 h-40 bg-bock-purple/10 rounded-full blur-2xl animate-pulse animation-delay-2000"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-bock-green/10 rounded-full blur-xl animate-pulse animation-delay-4000"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" x-data="{ visible: false }" x-intersect="visible = true">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-cyber font-bold text-white mb-6 transition-all duration-1000"
+                    :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    Our <span class="bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent">Impact</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto transition-all duration-1000 delay-300"
+                   :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    Building the future through innovation, collaboration, and excellence across multiple industries
+                </p>
+            </div>
+
+            <!-- Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" 
+                 x-data="{ 
+                     visible: false,
+                     counter1: { current: 0, target: 500 },
+                     counter2: { current: 0, target: 110 },
+                     counter3: { current: 0, target: 8 },
+                     counter4: { current: 0, target: 3 },
+                     startAnimation(counter, duration = 2000) {
+                         const increment = counter.target / (duration / 16);
+                         const timer = setInterval(() => {
+                             counter.current += increment;
+                             if (counter.current >= counter.target) {
+                                 counter.current = counter.target;
+                                 clearInterval(timer);
+                             }
+                         }, 16);
+                     },
+                     startAllAnimations() {
+                         this.startAnimation(this.counter1);
+                         this.startAnimation(this.counter2);
+                         this.startAnimation(this.counter3);
+                         this.startAnimation(this.counter4);
+                     }
+                 }" 
+                 x-intersect="visible = true; setTimeout(() => { startAllAnimations(); }, 500)">
+
+                <!-- Applications Received -->
+                <div class="relative group transition-all duration-700"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-electric-blue/10 to-electric-blue/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-electric-blue mb-2">
+                                <span x-text="Math.floor(counter1.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Applications</div>
+                            <div class="text-sm sm:text-base text-gray-300">Received</div>
+                        </div>
+                        <div class="absolute inset-0 bg-electric-blue/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Recruited -->
+                <div class="relative group transition-all duration-700 delay-150"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-green/10 to-bock-green/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-green/20 hover:border-bock-green/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-green mb-2">
+                                <span x-text="Math.floor(counter2.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Recruited</div>
+                            <div class="text-sm sm:text-base text-gray-300">Team Members</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-green/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Colleges Reached -->
+                <div class="relative group transition-all duration-700 delay-300"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-purple/10 to-bock-purple/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-purple/20 hover:border-bock-purple/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-purple mb-2">
+                                <span x-text="Math.floor(counter3.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Colleges</div>
+                            <div class="text-sm sm:text-base text-gray-300">Reached (Across India)</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Expected Incubation Centers -->
+                <div class="relative group transition-all duration-700 delay-450"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-orange/10 to-bock-orange/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-orange/20 hover:border-bock-orange/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-orange mb-2">
+                                <span x-text="Math.floor(counter4.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Incubation</div>
+                            <div class="text-sm sm:text-base text-gray-300">Centers Expected</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-orange/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row of Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8" 
+                 x-data="{ 
+                     visible: false,
+                     counter5: { current: 0, target: 180 },
+                     counter6: { current: 0, target: 70 },
+                     counter7: { current: 0, target: 4 },
+                     counter8: { current: 0, target: 10 },
+                     startAnimation(counter, duration = 2000) {
+                         const increment = counter.target / (duration / 16);
+                         const timer = setInterval(() => {
+                             counter.current += increment;
+                             if (counter.current >= counter.target) {
+                                 counter.current = counter.target;
+                                 clearInterval(timer);
+                             }
+                         }, 16);
+                     },
+                     startAllAnimations() {
+                         this.startAnimation(this.counter5);
+                         this.startAnimation(this.counter6);
+                         this.startAnimation(this.counter7);
+                         this.startAnimation(this.counter8);
+                     }
+                 }" 
+                 x-intersect="visible = true; setTimeout(() => { startAllAnimations(); }, 500)">
+
+                <!-- Internship Opportunities -->
+                <div class="relative group transition-all duration-700 delay-600"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-neural/10 to-bock-neural/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-neural/20 hover:border-bock-neural/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-neural mb-2">
+                                <span x-text="Math.floor(counter5.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Internship</div>
+                            <div class="text-sm sm:text-base text-gray-300">Opportunities</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-neural/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Vacancies -->
+                <div class="relative group transition-all duration-700 delay-750"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-red/10 to-bock-red/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-red/20 hover:border-bock-red/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-red mb-2">
+                                <span x-text="Math.floor(counter6.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Vacancies</div>
+                            <div class="text-sm sm:text-base text-gray-300">Available</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-red/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Expected MoUs -->
+                <div class="relative group transition-all duration-700 delay-900"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-bock-yellow/10 to-bock-yellow/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-bock-yellow/20 hover:border-bock-yellow/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold text-bock-yellow mb-2">
+                                <span x-text="Math.floor(counter7.current)">0</span>+
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Expected</div>
+                            <div class="text-sm sm:text-base text-gray-300">MoUs</div>
+                        </div>
+                        <div class="absolute inset-0 bg-bock-yellow/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Investment Timeline -->
+                <div class="relative group transition-all duration-700 delay-1050"
+                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <div class="bg-gradient-to-br from-electric-blue/10 to-bock-purple/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-electric-blue/20 hover:border-bock-purple/40 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-5xl lg:text-6xl font-cyber font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-2">
+                                <span x-text="Math.floor(counter8.current)">0</span>
+                            </div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Months</div>
+                            <div class="text-sm sm:text-base text-gray-300">Expected Investment</div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-bock-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Join Us Section -->
+    <!-- <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden" id="join">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030014] to-space-navy"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2
+                    class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-4">
+                    Join Our Mission
+                </h2>
+                <p class="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
+                    Be part of the revolution that's transforming industries and empowering humanity
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-12">
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-electric-blue" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">500+</h3>
+                    <p class="text-gray-400 text-sm">Applications Received</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-green" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 7.5h-1c-.83 0-1.5.67-1.5 1.5v6h-2v-2.5c0-.83-.67-1.5-1.5-1.5h-1c-.83 0-1.5.67-1.5 1.5V22h2v-3h2v3h4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">110+</h3>
+                    <p class="text-gray-400 text-sm">Team Members</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-purple" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">8+</h3>
+                    <p class="text-gray-400 text-sm">College Partners</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-orange" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h16z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">180+</h3>
+                    <p class="text-gray-400 text-sm">Opportunities</p>
+                </div>
+            </div>
+            
+        </div>
+    </section> -->
+
+    <!-- Footer Separator -->
+    <div class="footer-separator">
+        <div class="separator-line">
+            <div class="separator-gradient"></div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer with error handling
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                // Load footer
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponents();
+            initProductFilters();
+            // Removed initIndicators as requested - no dots needed
+            initCarouselInteractions();
+            initScrollAnimations();
+            initResponsiveHandling();
+            initTouchSupport();
+            startCarouselAutoplay();
+        });
+
+        // Enhanced Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        function showSlider(direction) {
+            const items = document.querySelectorAll('.carousel-enhanced .list .item');
+
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+
+            // Move the first item to the end for next, or last to front for prev
+            const list = document.querySelector('.carousel-enhanced .list');
+            if (direction === 'next') {
+                list.appendChild(items[0]);
+            } else {
+                list.prepend(items[items.length - 1]);
+            }
+
+            // Add a more pronounced animation effect when changing slides
+            const activeItem = items[1]; // The new active item after DOM manipulation
+            activeItem.style.transform = 'scale(0.92)';
+            activeItem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+
+            setTimeout(() => {
+                activeItem.style.transform = 'scale(1)';
+
+                // Reset transition after animation completes
+                setTimeout(() => {
+                    activeItem.style.transition = '';
+                }, 500);
+            }, 50);
+        }
+
+        // Enhanced Product filtering functionality with 3D animations
+        function initProductFilters() {
+            const filterButtons = document.querySelectorAll('.product-filter-3d');
+            const productCards = document.querySelectorAll('.product-card-3d');
+
+            // Add visible class to filters with staggered animation
+            setTimeout(() => {
+                filterButtons.forEach((button, index) => {
+                    setTimeout(() => {
+                        button.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 500);
+
+            // Add visible class to product cards with staggered animation
+            setTimeout(() => {
+                productCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 150);
+                });
+            }, 800);
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+
+                    // Update active filter with enhanced animation
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.transform = 'scale(0.95) rotateY(5deg)';
+                        setTimeout(() => {
+                            btn.style.transform = '';
+                        }, 200);
+                    });
+
+                    button.classList.add('active');
+                    button.style.transform = 'scale(1.05) rotateY(-5deg)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 200);
+
+                    // Filter products with enhanced 3D animation
+                    let visibleIndex = 0;
+                    productCards.forEach((card, index) => {
+                        const cardCategory = card.dataset.category;
+
+                        if (category === 'all' || cardCategory === category) {
+                            card.classList.remove('hidden');
+                            card.style.transform = 'translateY(40px) rotateX(10deg) scale(0.8)';
+                            card.style.opacity = '0';
+
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                                card.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
+                                card.style.opacity = '1';
+                                card.style.animationDelay = `${visibleIndex * 0.1}s`;
+                            }, visibleIndex * 100);
+                            visibleIndex++;
+                        } else {
+                            card.style.transform = 'translateY(-40px) rotateX(-10deg) scale(0.8)';
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.classList.add('hidden');
+                                card.classList.remove('visible');
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // Removed indicator click functionality as requested
+
+        // Enhanced carousel auto-advance with pause on interaction
+        let carouselInterval;
+        let isUserInteracting = false;
+
+        function startCarouselAutoplay() {
+            carouselInterval = setInterval(() => {
+                if (!isUserInteracting) {
+                    showSlider('next');
+                }
+            }, 6000);
+        }
+
+        function stopCarouselAutoplay() {
+            clearInterval(carouselInterval);
+        }
+
+        // Enhanced carousel hover and interaction handling
+        function initCarouselInteractions() {
+            const carousel = document.querySelector('.carousel-enhanced');
+            const navButtons = document.querySelectorAll('.nav-btn');
+
+            if (carousel) {
+                // Pause on hover
+                carousel.addEventListener('mouseenter', () => {
+                    isUserInteracting = true;
+                    stopCarouselAutoplay();
+                });
+
+                carousel.addEventListener('mouseleave', () => {
+                    isUserInteracting = false;
+                    startCarouselAutoplay();
+                });
+
+                // Pause on button interaction
+                navButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        isUserInteracting = true;
+                        stopCarouselAutoplay();
+
+                        // Resume after 10 seconds of no interaction
+                        setTimeout(() => {
+                            isUserInteracting = false;
+                            startCarouselAutoplay();
+                        }, 10000);
+                    });
+                });
+            }
+        }
+
+        // Intersection Observer for scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+
+                        // Animate product cards
+                        if (target.classList.contains('product-card')) {
+                            setTimeout(() => {
+                                target.classList.add('visible');
+                            }, parseInt(target.style.getPropertyValue('--index') || 0) * 100);
+                        }
+
+                        // Animate section headers
+                        if (target.classList.contains('section-header')) {
+                            target.style.animation = 'slideUp 0.8s ease-out forwards';
+                        }
+
+                        observer.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe product cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe section headers
+            document.querySelectorAll('h2').forEach(header => {
+                header.classList.add('section-header');
+                observer.observe(header);
+            });
+        }
+
+        // Enhanced responsive handling
+        function initResponsiveHandling() {
+            let resizeTimeout;
+
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    // Recalculate carousel dimensions
+                    const carousel = document.querySelector('.carousel-enhanced');
+                    if (carousel) {
+                        const items = carousel.querySelectorAll('.item');
+                        items.forEach(item => {
+                            item.style.transition = 'none';
+                            item.offsetHeight; // Trigger reflow
+                            item.style.transition = '';
+                        });
+                    }
+
+                    // Recalculate product grid
+                    const productCards = document.querySelectorAll('.product-card');
+                    productCards.forEach((card, index) => {
+                        card.style.setProperty('--index', index);
+                    });
+                }, 250);
+            });
+        }
+
+        // Touch/swipe support for mobile
+        function initTouchSupport() {
+            const carousel = document.querySelector('.carousel-enhanced');
+            if (!carousel) return;
+
+            let startX = 0;
+            let startY = 0;
+            let isScrolling = false;
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isScrolling = false;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (!startX || !startY) return;
+
+                const diffX = Math.abs(e.touches[0].clientX - startX);
+                const diffY = Math.abs(e.touches[0].clientY - startY);
+
+                if (diffY > diffX) {
+                    isScrolling = true;
+                }
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!startX || isScrolling) return;
+
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        showSlider('next');
+                    } else {
+                        showSlider('prev');
+                    }
+                }
+
+                startX = 0;
+                startY = 0;
+            }, { passive: true });
+        }
+
+        // Counter animation for join section
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('h3');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent);
+                        let current = 0;
+                        const increment = target / 50;
+
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                counter.textContent = Math.ceil(current) + '+';
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target + '+';
+                            }
+                        };
+
+                        updateCounter();
+                    });
+
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe the join section for counter animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const joinSection = document.querySelector('#join');
+            if (joinSection) {
+                counterObserver.observe(joinSection);
+            }
+        });
+
+        // Carousel functionality for businesses section
+        let currentItem = 0;
+        let items = document.querySelectorAll('.carousel .list .item');
+        let next = document.getElementById('next');
+        let prev = document.getElementById('prev');
+
+        if (next && prev && items.length > 0) {
+            next.addEventListener('click', function() {
+                showBusinessSlider('next');
+            });
+
+            prev.addEventListener('click', function() {
+                showBusinessSlider('prev');
+            });
+
+            function showBusinessSlider(type) {
+                let carousel = document.querySelector('.carousel');
+                let list = document.querySelector('.carousel .list');
+                let itemSlider = document.querySelectorAll('.carousel .list .item');
+
+                if (type === 'next') {
+                    list.appendChild(itemSlider[0]);
+                    carousel.classList.add('next');
+                } else {
+                    list.prepend(itemSlider[itemSlider.length - 1]);
+                    carousel.classList.add('prev');
+                }
+
+                setTimeout(() => {
+                    carousel.classList.remove('next');
+                    carousel.classList.remove('prev');
+                }, 500);
+            }
+
+            // Auto-advance carousel (optional)
+            setInterval(() => {
+                showBusinessSlider('next');
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

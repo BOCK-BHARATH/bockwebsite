@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Technology - BOCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C',
+                        'bock-yellow': '#FFEA00'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.8s ease-in forwards',
+                        'slideUp': 'slideUp 0.6s ease-out forwards',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'rotate-slow': 'rotate-slow 15s linear infinite',
+                        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+                        'grow': 'grow 4s ease-in-out infinite',
+                        'harvest': 'harvest 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(60px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(255, 165, 0, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(255, 165, 0, 0.6)' }
+                        },
+                        'rotate-slow': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        grow: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.1)' }
+                        },
+                        harvest: {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'cyber': ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(32, 201, 151, 0.1));
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(45deg, #FFA500, #20C997);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .food-card {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-card:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+        }
+
+        .food-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .food-card:hover::after {
+            left: 100%;
+        }
+
+        .tech-spec {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.05), rgba(32, 201, 151, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stagger-animation {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+
+        .food-logo {
+            background: linear-gradient(135deg, #FFA500, #20C997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .food-card {
+                transform: none;
+            }
+            .food-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#030014] text-white overflow-x-hidden">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-10 w-64 h-64 bg-bock-orange/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-64 h-64 bg-bock-green/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-bock-orange/10 rounded-full blur-3xl animate-rotate-slow"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 text-center">
+            <div class="stagger-animation">
+                <h1 class="font-cyber text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 food-logo animate-pulse-glow">
+                    FOOD TECHNOLOGY
+                </h1>
+            </div>
+            <div class="stagger-animation">
+                <p class="font-raleway text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-8">
+                    Building a sustainable food ecosystem that provides affordable, nutritious food to everyone, everywhere through innovative technology.
+                </p>
+            </div>
+            <div class="stagger-animation">
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-bock-orange/20 blur-xl rounded-full"></div>
+                        <button class="relative bg-gradient-to-r from-bock-orange to-bock-green px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                            Explore Food Tech
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Products Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Our <span class="bg-gradient-to-r from-bock-orange to-bock-green bg-clip-text text-transparent">Food Solutions</span>
+                </h2>
+                <p class="font-raleway text-lg text-gray-300 max-w-3xl mx-auto">
+                    Revolutionary food technology solutions that transform agriculture, production, and distribution for global food security.
+                </p>
+            </div>
+
+            <!-- Food Product Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20">
+                <!-- Product 1: Smart Agriculture -->
+                <div class="food-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-green to-bock-orange rounded-full flex items-center justify-center mb-6 mx-auto animate-grow">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A1,1 0 0,1 13,3V4.5C15.5,4.5 17.5,6.5 17.5,9C17.5,10.38 16.81,11.59 15.76,12.36L16.5,21H14.5L13.86,13.5H12.14L11.5,21H9.5L10.24,12.36C9.19,11.59 8.5,10.38 8.5,9C8.5,6.5 10.5,4.5 13,4.5V3A1,1 0 0,1 12,2M12,6.5A2.5,2.5 0 0,0 9.5,9A2.5,2.5 0 0,0 12,11.5A2.5,2.5 0 0,0 14.5,9A2.5,2.5 0 0,0 12,6.5Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-green mb-4 text-center">Smart Agriculture Platform</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            AI-powered precision farming that optimizes crop yields while minimizing resource consumption and environmental impact.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Key Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    IoT sensor networks
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Automated irrigation systems
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Crop health monitoring
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-green rounded-full mr-3"></span>
+                                    Weather prediction AI
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-green/20 text-bock-green px-6 py-3 rounded-lg hover:bg-bock-green hover:text-white transition-all duration-300 border border-bock-green/30">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Food Processing -->
+                <div class="food-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <!-- Product Icon/Visual -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-orange to-bock-yellow rounded-full flex items-center justify-center mb-6 mx-auto animate-harvest" style="animation-delay: -1s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-orange mb-4 text-center">Automated Food Processing</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Advanced robotic systems for efficient, hygienic, and sustainable food processing and packaging operations.
+                        </p>
+
+                        <!-- Tech Specs -->
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Capabilities:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Robotic processing lines
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Quality control systems
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Zero-waste operations
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-orange rounded-full mr-3"></span>
+                                    Sustainable packaging
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-orange/20 text-bock-orange px-6 py-3 rounded-lg hover:bg-bock-orange hover:text-white transition-all duration-300 border border-bock-orange/30">
+                                Explore System
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Nutrition Analytics -->
+                <div class="food-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-electric-blue to-bock-green rounded-full flex items-center justify-center mb-6 mx-auto animate-harvest" style="animation-delay: -2s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-electric-blue mb-4 text-center">Nutrition Analytics Engine</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            AI-powered nutritional analysis and personalized meal planning for optimal health outcomes.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Features:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Real-time nutrient tracking
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Personalized recommendations
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Health impact analysis
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-electric-blue rounded-full mr-3"></span>
+                                    Recipe optimization
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-electric-blue/20 text-electric-blue px-6 py-3 rounded-lg hover:bg-electric-blue hover:text-white transition-all duration-300 border border-electric-blue/30">
+                                Try Analytics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Supply Chain -->
+                <div class="food-card gradient-border rounded-2xl p-8 group">
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-gradient-to-br from-bock-purple to-bock-green rounded-full flex items-center justify-center mb-6 mx-auto animate-harvest" style="animation-delay: -3s;">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.92,6.01C18.72,5.42 18.16,5 17.5,5H16.75L15.97,2.63C15.69,1.84 14.95,1.25 14.09,1.25H9.91C9.05,1.25 8.31,1.84 8.03,2.63L7.25,5H6.5C5.84,5 5.28,5.42 5.08,6.01L3,12V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V12L18.92,6.01M9.91,3.25H14.09L14.62,5H9.38L9.91,3.25M19,20H5V13H19V20Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="font-space text-2xl font-bold text-bock-purple mb-4 text-center">Smart Supply Chain</h3>
+                        <p class="font-inter text-gray-300 mb-6 text-center leading-relaxed">
+                            Blockchain-powered supply chain management ensuring food traceability, safety, and efficient distribution.
+                        </p>
+
+                        <div class="tech-spec rounded-xl p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Solutions:</h4>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Farm-to-table tracking
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Cold chain monitoring
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Smart inventory management
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-bock-purple rounded-full mr-3"></span>
+                                    Predictive logistics
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button class="bg-bock-purple/20 text-bock-purple px-6 py-3 rounded-lg hover:bg-bock-purple hover:text-white transition-all duration-300 border border-bock-purple/30">
+                                View Platform
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Showcase -->
+            <div class="relative">
+                <div class="text-center mb-12">
+                    <h3 class="font-montserrat text-3xl font-bold text-white mb-4">
+                        Global <span class="text-bock-orange">Food Impact</span>
+                    </h3>
+                    <p class="font-raleway text-gray-300 max-w-2xl mx-auto">
+                        Our food technology solutions address critical global challenges and create sustainable food systems.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Impact 1 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-green to-bock-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Sustainable Farming</h4>
+                        <p class="text-gray-400 text-sm">Reduced water usage by 40% with smart irrigation</p>
+                    </div>
+
+                    <!-- Impact 2 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-orange to-bock-yellow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M17,13H13V17H11V13H7V11H11V7H13V11H17V13Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Increased Yield</h4>
+                        <p class="text-gray-400 text-sm">35% higher crop yields through precision agriculture</p>
+                    </div>
+
+                    <!-- Impact 3 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-electric-blue to-bock-green rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M13,17H11V15H13V17M13,13H11V7H13V13Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Food Safety</h4>
+                        <p class="text-gray-400 text-sm">99.9% contamination detection accuracy</p>
+                    </div>
+
+                    <!-- Impact 4 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-bock-purple to-bock-green rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-space text-lg font-semibold text-white mb-2">Zero Waste</h4>
+                        <p class="text-gray-400 text-sm">95% reduction in food waste through optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-bock-orange/10 to-bock-green/10"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-cyber text-3xl sm:text-4xl font-bold text-white mb-6">
+                Feed the Future
+            </h2>
+            <p class="font-raleway text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join us in creating a sustainable food ecosystem that nourishes the world while protecting our planet.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-gradient-to-r from-bock-orange to-bock-green px-8 py-4 rounded-full font-semibold text-white hover:scale-105 transform transition-all duration-300">
+                    Partner With Us
+                </button>
+                <button class="border border-bock-orange text-bock-orange px-8 py-4 rounded-full font-semibold hover:bg-bock-orange hover:text-white transition-all duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer
+        async function loadComponents() {
+            try {
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all food cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const foodCards = document.querySelectorAll('.food-card');
+            foodCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.8s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

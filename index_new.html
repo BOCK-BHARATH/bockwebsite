@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOCK - Empowering the World!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'space-navy': '#0B1F33',
+                        'electric-blue': '#1F8EF1',
+                        'bock-orange': '#FFA500',
+                        'bock-indigo': '#6C5CE7',
+                        'bock-neural': '#00A8FF',
+                        'bock-green': '#20C997',
+                        'bock-purple': '#9B59B6',
+                        'bock-red': '#E74C3C',
+                        'bock-yellow': '#FFEA00'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.5s ease-in forwards',
+                        'slideIn': 'slideIn 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 7s infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        /* Animation for blob elements */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        /* Add missing float animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .carousel .list {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .carousel .list .item {
+            position: absolute;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            transition: left 0.5s, opacity 0.5s, width 0.5s;
+        }
+        
+        .carousel .list .item:nth-child(2) {
+            z-index: 10;
+            transform: translateX(0);
+        }
+        
+        .carousel .list .item img {
+            width: 40%;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: right 1.5s;
+            max-height: 300px;
+            object-fit: contain;
+        }
+        
+        .carousel .list .item .introduce {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .carousel .list .item:nth-child(2) .introduce {
+            opacity: 1;
+            pointer-events: auto;
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            transition: opacity 0.5s;
+        }
+        
+        .carousel .list .item .introduce .title {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #fff;
+        }
+        
+        .carousel .list .item .introduce .topic {
+            font-size: 2.5em;
+            font-weight: 500;
+            color: #1F8EF1;
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .carousel .list .item .introduce .des {
+            font-size: 0.9rem;
+            color: #e9dac1;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+        
+        .carousel .list .item .introduce .seeMore {
+            background: linear-gradient(135deg, #1F8EF1 0%, #9B59B6 100%);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel .list .item .introduce .seeMore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(31, 142, 241, 0.3);
+        }
+        
+        /* Navigation arrows */
+        .arrows {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        
+        .arrows button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(31, 142, 241, 0.3);
+            color: #1F8EF1;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .arrows button:hover {
+            background: rgba(31, 142, 241, 0.2);
+            border-color: #1F8EF1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel {
+                height: 400px;
+            }
+            
+            .carousel .list .item img {
+                width: 60%;
+                right: 20%;
+                top: 20%;
+            }
+            
+            .carousel .list .item:nth-child(2) .introduce {
+                width: 90%;
+                top: 65%;
+                left: 5%;
+                text-align: center;
+            }
+            
+            .carousel .list .item .introduce .topic {
+                font-size: 2em;
+            }
+            
+            .carousel .list .item .introduce .title {
+                font-size: 1.2em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel .list .item .introduce .topic {
+                font-size: 1.5em;
+            }
+            
+            .carousel .list .item .introduce .title {
+                font-size: 1em;
+            }
+            
+            .carousel .list .item .introduce .des {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#030014]">
+    <!-- Include Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen overflow-hidden">
+        <!-- Background Video -->
+        <video src="assests/techvid.mp4" muted loop autoplay class="absolute inset-0 w-full h-full object-cover z-0"></video>
+        
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[#030014] opacity-80"></div>
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-electric-blue rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-bock-purple rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16">
+            <div class="text-center mb-8 sm:mb-12">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+                    WELCOME TO<br>
+                    <span class="bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent">BOCK</span>
+                </h1>
+                
+                <h3 class="text-lg sm:text-xl md:text-2xl text-white/90 mb-8">
+                    Empowering <span class="text-electric-blue font-semibold">People, Society, World</span>
+                </h3>
+                
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto border border-white/20">
+                    <div class="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-4">
+                        वसुधैव कुटुम्बकम्
+                    </div>
+                    <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
+                        असतो माँ सद-गमय | तमसो माँ ज्योतिर्-गमय |<br> मृत्योर्-माँ अमृतं गमय |
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12">
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-electric-blue/30 transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="https://png.pngtree.com/thumb_back/fh260/background/20230618/pngtree-visual-representation-of-an-electric-vehicle-being-charged-in-3d-image_3630808.jpg" 
+                         alt="Self-Powered Vehicle" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-white mb-3">Self-Powered Vehicle (SPVs)</h4>
+                        <p class="text-gray-300 text-sm mb-4 leading-relaxed">Revolutionary electric vehicle technology featuring self-powered systems and zero-emission transportation.</p>
+                        <a href="https://automotive.bockbharath.com" class="inline-block bg-gradient-to-r from-electric-blue to-bock-purple text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-bock-purple/30 transition-all duration-300 hover:transform hover:scale-105">
+                    <img src="images/rocket.jpeg" 
+                         alt="Reusable Rockets" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-white mb-3">Reusable Rockets & Space Travel</h4>
+                        <p class="text-gray-300 text-sm mb-4 leading-relaxed">Advanced space technology for interplanetary missions and space exploration initiatives.</p>
+                        <a href="https://space.bockbharath.com" class="inline-block bg-gradient-to-r from-bock-purple to-bock-indigo text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-bock-green/30 transition-all duration-300 hover:transform hover:scale-105 md:col-span-2 lg:col-span-1">
+                    <img src="images/health.jpeg" 
+                         alt="AI Doctor" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-white mb-3">AI Doctor & Automated Hospitals</h4>
+                        <p class="text-gray-300 text-sm mb-4 leading-relaxed">Revolutionary healthcare automation with AI-powered medical diagnosis and treatment systems.</p>
+                        <a href="https://health.bockbharath.com" class="inline-block bg-gradient-to-r from-bock-green to-bock-neural text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Businesses Section -->
+    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden" id="businesses">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030014] to-space-navy"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-4">
+                    Our Businesses
+                </h2>
+                <p class="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
+                    Eight innovative subsidiaries addressing global challenges through cutting-edge technology
+                </p>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="carousel">
+                <div class="list">
+                    <!-- Bock Automotive -->
+                    <div class="item">
+                        <img src="assests/logos/Automative.svg" alt="Bock Automotive">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">AUTOMOTIVE</div>
+                            <div class="des">Revolutionary self-powered vehicles that eliminate pollution and dependence on fossil fuels. Our advanced electric vehicle technology features sustainable transportation solutions for a cleaner future.</div>
+                            <button class="seeMore" onclick="window.open('https://automotive.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bock Foods -->
+                    <div class="item">
+                        <img src="assests/logos/Foods.svg" alt="Bock Foods">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">FOODS</div>
+                            <div class="des">Building an ecosystem to provide affordable, nutritious food to everyone, everywhere. Our sustainable food solutions address global hunger while promoting environmental sustainability.</div>
+                            <button class="seeMore" onclick="window.open('https://foods.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bock Space -->
+                    <div class="item">
+                        <img src="assests/logos/Space.svg" alt="Bock Space">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">SPACE</div>
+                            <div class="des">Pioneering space research and exploration technologies for humanity's future. Advanced reusable rocket technology and interplanetary mission capabilities.</div>
+                            <button class="seeMore" onclick="window.open('https://space.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bock AI -->
+                    <div class="item">
+                        <img src="assests/logos/AI.svg" alt="Bock AI">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">AI</div>
+                            <div class="des">The backbone of BOCK, providing automation solutions across all our subsidiaries. Advanced artificial intelligence systems that revolutionize industries and improve lives.</div>
+                            <button class="seeMore" onclick="window.open('https://ai.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bock Health -->
+                    <div class="item">
+                        <img src="assests/logos/health.svg" alt="Bock Health">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">HEALTH</div>
+                            <div class="des">Pioneering automated hospitals to increase accessibility and affordability of healthcare. AI-powered medical systems and robotic surgery solutions.</div>
+                            <button class="seeMore" onclick="window.open('https://health.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bock Chain -->
+                    <div class="item">
+                        <img src="assests/logos/Chain.svg" alt="Bock Chain">
+                        <div class="introduce">
+                            <div class="title">BOCK</div>
+                            <div class="topic">CHAIN</div>
+                            <div class="des">Revolutionizing the internet with a secure, decentralized blockchain platform. Building the future of digital transactions and data security.</div>
+                            <button class="seeMore" onclick="window.open('https://chain.bockbharath.com', '_blank')">SEE MORE</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <div class="arrows">
+                    <button class="prev" onclick="showSlider('prev')">&#8249;</button>
+                    <button class="next" onclick="showSlider('next')">&#8250;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden" id="products">
+        <div class="absolute inset-0 bg-gradient-to-b from-space-navy to-[#030014]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-4">
+                    Our Products
+                </h2>
+                <p class="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
+                    Innovative solutions across multiple industries, designed to revolutionize the way we live and work
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Automotive Products -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-electric-blue/20 hover:border-electric-blue/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-electric-blue rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-electric-blue">Automotive EV1</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Revolutionary electric vehicle technology featuring self-powered systems and zero-emission transportation solutions for sustainable mobility.</p>
+                </div>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-electric-blue/20 hover:border-electric-blue/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-electric-blue rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-electric-blue">Automotive SPV</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Self-Powered Vehicle systems that generate their own energy through innovative renewable technology integration and advanced power management.</p>
+                </div>
+                
+                <!-- Food & Delivery Products -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-orange/20 hover:border-bock-orange/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-orange rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-orange">Bock Foods</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Affordable and nutritious food ecosystem providing high-quality meals at half the current market price through innovative supply chain optimization.</p>
+                </div>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-orange/20 hover:border-bock-orange/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-orange rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-orange">DroBock</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Advanced drone delivery system for efficient and autonomous food delivery, reducing costs and delivery times while maintaining quality.</p>
+                </div>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-orange/20 hover:border-bock-orange/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-orange rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-orange">ZipDroBock</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">High-speed drone delivery solution for urgent deliveries, featuring AI-powered navigation and real-time tracking capabilities.</p>
+                </div>
+                
+                <!-- Space Products -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-purple/20 hover:border-bock-purple/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-purple rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-purple">Inertia Nano</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Compact space technology solution for small satellite deployment and micro-mission capabilities in low Earth orbit operations.</p>
+                </div>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-purple/20 hover:border-bock-purple/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-purple rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-purple">Inertia</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Medium-scale space technology platform for satellite deployment, space research, and orbital mission management systems.</p>
+                </div>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-bock-purple/20 hover:border-bock-purple/50 transition-all hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-bock-purple rounded-full mr-3"></div>
+                        <h3 class="text-lg font-semibold text-bock-purple">Inertia Mega</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">Large-scale space technology solution for heavy payload deployment, deep space missions, and advanced orbital infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden" id="join">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030014] to-space-navy"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-4">
+                    Join Our Mission
+                </h2>
+                <p class="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
+                    Be part of the revolution that's transforming industries and empowering humanity
+                </p>
+            </div>
+
+            <!-- Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-electric-blue" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">500+</h3>
+                    <p class="text-gray-400 text-sm">Applications Received</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-green" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 7.5h-1c-.83 0-1.5.67-1.5 1.5v6h-2v-2.5c0-.83-.67-1.5-1.5-1.5h-1c-.83 0-1.5.67-1.5 1.5V22h2v-3h2v3h4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">110+</h3>
+                    <p class="text-gray-400 text-sm">Team Members</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-purple" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">8+</h3>
+                    <p class="text-gray-400 text-sm">College Partners</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-bock-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-bock-orange" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h16z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">180+</h3>
+                    <p class="text-gray-400 text-sm">Opportunities</p>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="joinus.html" class="bg-gradient-to-r from-electric-blue to-bock-purple text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Join Our Team
+                </a>
+                <a href="internship.html" class="bg-white/10 border border-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+                    Internship Program
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header and footer with error handling
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('header.html');
+                if (headerResponse.ok) {
+                    const headerData = await headerResponse.text();
+                    document.getElementById('header-container').innerHTML = headerData;
+                }
+
+                // Load footer
+                const footerResponse = await fetch('footer.html');
+                if (footerResponse.ok) {
+                    const footerData = await footerResponse.text();
+                    document.getElementById('footer-container').innerHTML = footerData;
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadComponents);
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 6;
+        
+        function showSlider(direction) {
+            const items = document.querySelectorAll('.carousel .list .item');
+            
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+            
+            // Move the first item to the end for next, or last to front for prev
+            const list = document.querySelector('.carousel .list');
+            if (direction === 'next') {
+                list.appendChild(items[0]);
+            } else {
+                list.prepend(items[items.length - 1]);
+            }
+        }
+        
+        // Auto-advance carousel every 5 seconds
+        setInterval(() => {
+            showSlider('next');
+        }, 5000);
+
+        // Counter animation for join section
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('h3');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent);
+                        let current = 0;
+                        const increment = target / 50;
+                        
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                counter.textContent = Math.ceil(current) + '+';
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target + '+';
+                            }
+                        };
+                        
+                        updateCounter();
+                    });
+                    
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe the join section for counter animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const joinSection = document.querySelector('#join');
+            if (joinSection) {
+                counterObserver.observe(joinSection);
+            }
+        });
+    </script>
+</body>
+</html>
