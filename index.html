@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOCK - Empowering the World!</title>
-    <!-- NOTE: For production, replace CDN with installed Tailwind CSS -->
-    <!-- See: https://tailwindcss.com/docs/installation -->
+    <link rel="icon" type="image/svg+xml" href="assests/logos/Bock Text White Resized-01.svg">
+    <link rel="alternate icon" href="assests/logos/Bock Text White Resized-01.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts for mixed modern design -->
     <link
@@ -19,6 +19,10 @@
     <!-- Custom Styles for Business Carousel -->
     <link rel="stylesheet" href="styleindex.css">
 
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
@@ -134,9 +138,34 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
+        /* Global z-index management and stacking context fixes */
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+        }
+
+        /* Ensure proper stacking context for all sections */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Business section specific z-index management */
+        .business-section {
+            z-index: 2;
+            isolation: isolate;
+        }
+
+        /* Header needs higher z-index when fixed */
+        header, .header, #header-container {
+            z-index: 1000;
+            position: relative;
+        }
+
+        /* Footer needs proper z-index */
+        footer, .footer, #footer-container {
+            z-index: 100;
+            position: relative;
         }
 
         h1,
@@ -1458,40 +1487,47 @@
     <div id="header-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative h-screen max-h-[800px] overflow-hidden">
+    <section class="relative h-screen min-h-[900px] overflow-hidden">
         <!-- Background Video -->
         <video src="assests/techvid.mp4" muted loop autoplay
             class="absolute inset-0 w-full h-full object-cover z-0"></video>
 
-        <!-- Animated Background -->
+        <!-- Enhanced Animated Background -->
         <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-[#030014] opacity-80"></div>
-            <div
-                class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
-            </div>
-            <div
-                class="absolute top-0 -right-4 w-72 h-72 bg-electric-blue rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
-            </div>
-            <div
-                class="absolute -bottom-8 left-20 w-72 h-72 bg-bock-purple rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#030014]/70 via-[#0B1F33]/60 to-[#030014]/90"></div>
+            <!-- More dynamic floating elements -->
+            <div class="absolute top-10 left-10 w-96 h-96 bg-electric-blue/20 rounded-full mix-blend-screen filter blur-3xl animate-pulse"></div>
+            <div class="absolute top-20 right-20 w-80 h-80 bg-bock-purple/25 rounded-full mix-blend-screen filter blur-2xl animate-bounce-slow"></div>
+            <div class="absolute bottom-20 left-1/4 w-64 h-64 bg-bock-green/20 rounded-full mix-blend-screen filter blur-xl animate-float"></div>
+            <div class="absolute top-1/3 right-1/3 w-48 h-48 bg-bock-orange/30 rounded-full mix-blend-screen filter blur-2xl animate-ping"></div>
+            <!-- Particle effects -->
+            <div class="particles absolute inset-0">
+                <div class="particle absolute w-2 h-2 bg-electric-blue/60 rounded-full animate-float" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+                <div class="particle absolute w-1 h-1 bg-bock-purple/70 rounded-full animate-bounce" style="top: 60%; left: 80%; animation-delay: 1s;"></div>
+                <div class="particle absolute w-3 h-3 bg-bock-green/50 rounded-full animate-pulse" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+                <div class="particle absolute w-2 h-2 bg-bock-orange/60 rounded-full animate-ping" style="top: 80%; left: 30%; animation-delay: 1.5s;"></div>
+                <div class="particle absolute w-1 h-1 bg-electric-blue/80 rounded-full animate-float" style="top: 30%; left: 90%; animation-delay: 0.5s;"></div>
             </div>
         </div>
 
-        <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16">
-            <div class="text-center mb-8 sm:mb-12">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-                    WELCOME TO<br>
-                    <div class="flex justify-center items-center gap-4">
-                        <span class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white font-cyber tracking-wider"
-                            style="color: transparent; -webkit-text-stroke: 2px white;">BOCK</span>
+        <!-- Enhanced Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 flex flex-col justify-center min-h-screen">
+            <div class="text-center mb-12 sm:mb-16">                
+                <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+                    <span class="block mb-4 text-white animate-pulse-slow">
+                        WELCOME TO
+                    </span>
+                    <div class="flex justify-center items-center gap-6">
+                        <span class="bock-logo text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-cyber tracking-wider font-black text-transparent" style="-webkit-text-stroke: 2px white; text-stroke: 2px white;">
+                            BOCK
+                        </span>
                     </div>
                 </h1>
 
-                <h3 class="text-lg sm:text-xl md:text-2xl text-white/90 mb-8">
-                    Empowering <span id="changing-word" class="text-electric-blue font-semibold">People</span>
-                </h3>
-
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 font-light leading-relaxed">
+                    Empowering <span id="changing-word" class="text-electric-blue font-bold">People</span> 
+                    <br class="hidden sm:block">Through Revolutionary Technology
+                </h2>
                 <style>
                     @keyframes fadeInOut {
 
@@ -1596,122 +1632,154 @@
         </div>
     </section>
 
-    <!-- Businesses Section -->
-    <section class="business-section">
-        <div class="carousel">
-            <div class="suri-title">
-                <a class="link-s link--surinami" href="#"><span data-letters-l="O u r" data-letters-r="I m p a c t">O u r  I m p a c t</span></a>
+    <!-- Horizontal Scrolling Businesses Section -->
+    <section class="horizontal-business-section">
+        <div class="horizontal-container">
+            <!-- Horizontal Scrolling Container -->
+            <div class="horizontal-scroll-wrapper">
+                <div class="business-panels">
+                    <!-- Business Panel 1: Automotive -->
+                    <div class="business-panel" data-bg="#1F8EF1">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Automative.svg" alt="Automotive">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">AUTOMOTIVE</h3>
+                                <p class="business-description">
+                                    We have built a concept vehicle called a Self-Powered Vehicle (SPVs) to solve all these. The
+                                    energy required is met by just running the vehicle itself, and 100% of the energy is renewable
+                                    sources sounds crazy, but we have already figured it out.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 2: Foods -->
+                    <div class="business-panel" data-bg="#20C997">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Foods.svg" alt="Foods">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">FOODS</h3>
+                                <p class="business-description">
+                                    We at BockFoods have a mission of providing affordable and nutritious food to all. You will be
+                                    able to get food that is much more nutritious and tasty at half of the price that you are paying
+                                    right now.
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 3: Space -->
+                    <div class="business-panel" data-bg="#9B59B6">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Space.svg" alt="Space">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">SPACE</h3>
+                                <p class="business-description">
+                                    Bock Space is a space research organization managing 4 bodies under it. Bock Space will be a
+                                    robust system for space technology that is highly ambitious in taking mankind towards
+                                    advancements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 4: AI -->
+                    <div class="business-panel" data-bg="#E74C3C">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/AI.svg" alt="AI">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">AI</h3>
+                                <p class="business-description">
+                                    It is the backbone of Bock, much automation work of other subsidiary companies is done at Bock
+                                    AI. Starting with the building of Autonomous Vehicle Technology for the automobiles that were
+                                    developed at Bock Automotive, we then move on to building Autonomous Drone Delivery.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 5: Health -->
+                    <div class="business-panel" data-bg="#FFA500">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/health.svg" alt="Health">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">HEALTH</h3>
+                                <p class="business-description">
+                                    At Bock Health, we are revolutionizing the healthcare landscape by the introduction of Automated
+                                    Hospitals. Imagine a world where you walk into hospitals where no human intervention is there
+                                    (including the Doctors). Everything will be replaced by AI.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 6: Chain -->
+                    <div class="business-panel" data-bg="#6C5CE7">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Chain.svg" alt="Chain">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">CHAIN</h3>
+                                <p class="business-description">
+                                    At Bock Chain, we are building our own blockchain and will revolutionize the internet landscape
+                                    by addressing its inherent challenges. Our focus lies in empowering users through
+                                    decentralization, ensuring the authenticity of information via blockchain technology.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 7: Institute -->
+                    <div class="business-panel" data-bg="#00A8FF">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/health.svg" alt="Institute">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">INSTITUTE</h3>
+                                <p class="business-description">
+                                    COMING SOON
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Panel 8: Force -->
+                    <div class="business-panel" data-bg="#FFEA00">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Space.svg" alt="Force">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                <h3 class="business-title">FORCE</h3>
+                                <p class="business-description">
+                                    COMING SOON                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="list">
-                <div class="item">
-                    <img src="assests/logos/Automative.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">AUTOMOTIVE</div>
-                        <div class="des">
-                            We have built a concept vehicle called a Self-Powered Vehicle (SPVs) to solve all these. The
-                            energy required is met by just running the vehicle itself, and 100% of the energy is renewable
-                            sources sounds crazy, but we have already figured it out.    
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/Foods.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">FOODS</div>
-                        <div class="des">
-                            We at BockFoods have a mission of providing affordable and nutritious food to all. You will be
-                            able to get food that is much more nutritious and tasty at half of the price that you are paying
-                            right now.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/Space.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">SPACE</div>
-                        <div class="des">
-                            Bock Space is a space research organization managing 4 bodies under it. Bock Space will be a
-                            robust system for space technology that is highly ambitious in taking mankind towards
-                            advancements.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/AI.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">AI</div>
-                        <div class="des">
-                            It is the backbone of Bock, much automation work of other subsidiary companies is done at Bock
-                            AI. Starting with the building of Autonomous Vehicle Technology for the automobiles that were
-                            developed at Bock Automotive, we then move on to building Autonomous Drone Delivery for the
-                            Drone Delivery built at Bock Foods.    
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/health.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">HEALTH</div>
-                        <div class="des">
-                            At Bock Health, we are revolutionizing the healthcare landscape by the introduction of Automated
-                            Hospitals. Imagine a world where you walk into hospitals where no human intervention is there
-                            (including the Doctors). Everything will be replaced by AI and the whole hospital will be
-                            automated.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/Chain.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">CHAIN</div>
-                        <div class="des">
-                            At Bock Chain, we are building our own blockchain and will revolutionize the internet landscape
-                            by addressing its inherent challenges. Our focus lies in empowering users through
-                            decentralization, ensuring the authenticity of information via blockchain technology.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/health.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">INSTITUTE</div>
-                        <div class="des">
-                            Advanced educational programs and research initiatives for technological innovation and skill development.
-                            COMING SOON
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="assests/logos/Space.svg">
-                    <div class="introduce">
-                        <div class="title">BOCK</div>
-                        <div class="topic">FORCE</div>
-                        <div class="des">
-                            Advanced defense technologies ensuring global security and protecting against threats.
-                            COMING SOON
-                        </div>
-                    </div>
-                </div>
-                <div class="arrows">
-                <button id="prev">‹</button>
-                <button id="next">›</button>
-            </div>
-            </div>
-            
         </div>
     </section>
 
@@ -1727,14 +1795,13 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center mb-16" x-data="{ visible: false }" x-intersect="visible = true">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-cyber font-bold text-white mb-6 transition-all duration-1000"
+                <span class="relative inline-block font-cyber text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-500 tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase font-light cursor-pointer
+                        border-t-2 border-b-2 border-transparent
+                        hover:border-t-current hover:border-b-current
+                        transition-[border-width,color] duration-500 ease-in-out transition-all duration-1000"
                     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
-                    Our <span class="bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent">Impact</span>
-                </h2>
-                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto transition-all duration-1000 delay-300"
-                   :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
-                    Building the future through innovation, collaboration, and excellence across multiple industries
-                </p>
+                    O U R &nbsp; I M P A C T
+                </span>
             </div>
 
             <!-- Metrics Grid -->
@@ -1915,79 +1982,12 @@
         </div>
     </section>
 
-
-    <!-- Join Us Section -->
-    <!-- <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden" id="join">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#030014] to-space-navy"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-4">
-                    Join Our Mission
-                </h2>
-                <p class="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
-                    Be part of the revolution that's transforming industries and empowering humanity
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-12">
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-electric-blue" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">500+</h3>
-                    <p class="text-gray-400 text-sm">Applications Received</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-bock-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-bock-green" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 7.5h-1c-.83 0-1.5.67-1.5 1.5v6h-2v-2.5c0-.83-.67-1.5-1.5-1.5h-1c-.83 0-1.5.67-1.5 1.5V22h2v-3h2v3h4z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">110+</h3>
-                    <p class="text-gray-400 text-sm">Team Members</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-bock-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-bock-purple" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">8+</h3>
-                    <p class="text-gray-400 text-sm">College Partners</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-bock-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-bock-orange" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h16z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">180+</h3>
-                    <p class="text-gray-400 text-sm">Opportunities</p>
-                </div>
-            </div>
-            
-        </div>
-    </section> -->
-
     <!-- Footer Separator -->
     <div class="footer-separator">
         <div class="separator-line">
             <div class="separator-gradient"></div>
         </div>
     </div>
-
-    <!-- Include Footer -->
     <div id="footer-container"></div>
 
     <script>
@@ -2022,42 +2022,54 @@
             initResponsiveHandling();
             initTouchSupport();
             startCarouselAutoplay();
+            initHorizontalScrolling();
         });
 
-        // Enhanced Carousel functionality
+        // Enhanced Business Section Carousel functionality
         let currentSlide = 0;
-        const totalSlides = 6;
+        const totalSlides = 8; // Updated to match actual number of items
 
         function showSlider(direction) {
-            const items = document.querySelectorAll('.carousel-enhanced .list .item');
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel .list .item');
+            
+            if (!items.length) return;
 
-            if (direction === 'next') {
-                currentSlide = (currentSlide + 1) % totalSlides;
-            } else {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            }
-
-            // Move the first item to the end for next, or last to front for prev
-            const list = document.querySelector('.carousel-enhanced .list');
-            if (direction === 'next') {
-                list.appendChild(items[0]);
-            } else {
-                list.prepend(items[items.length - 1]);
-            }
-
-            // Add a more pronounced animation effect when changing slides
-            const activeItem = items[1]; // The new active item after DOM manipulation
-            activeItem.style.transform = 'scale(0.92)';
-            activeItem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-
+            // Add animation class to prevent conflicts
+            carousel.classList.remove('next', 'prev');
+            
             setTimeout(() => {
-                activeItem.style.transform = 'scale(1)';
+                const list = carousel.querySelector('.list');
+                
+                if (direction === 'next') {
+                    carousel.classList.add('next');
+                    list.appendChild(items[0]);
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                } else {
+                    carousel.classList.add('prev');
+                    list.prepend(items[items.length - 1]);
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                }
 
-                // Reset transition after animation completes
+                // Remove animation class after animation completes
                 setTimeout(() => {
-                    activeItem.style.transition = '';
+                    carousel.classList.remove('next', 'prev');
                 }, 500);
-            }, 50);
+            }, 10);
+        }
+
+        // Initialize carousel event listeners
+        function initCarousel() {
+            const nextBtn = document.getElementById('next');
+            const prevBtn = document.getElementById('prev');
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => showSlider('next'));
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => showSlider('prev'));
+            }
         }
 
         // Enhanced Product filtering functionality with 3D animations
@@ -2375,6 +2387,195 @@
             setInterval(() => {
                 showBusinessSlider('next');
             }, 5000);
+        }
+
+        // Initialize horizontal scrolling with GSAP
+        function initHorizontalScrolling() {
+            // Register ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Check if the horizontal business section exists
+            const horizontalSection = document.querySelector('.horizontal-business-section');
+            if (!horizontalSection) return;
+
+            const businessPanels = document.querySelector('.business-panels');
+            const panels = document.querySelectorAll('.business-panel');
+            
+            if (!businessPanels || !panels.length) return;
+
+            // Calculate total scroll distance (minus one panel since we start at the first one)
+            const totalScrollDistance = (panels.length - 1) * 100;
+
+            // Create the horizontal scrolling animation
+            const horizontalTween = gsap.to(businessPanels, {
+                x: `-${totalScrollDistance}vw`,
+                ease: "none",
+                duration: 1
+            });
+
+            // Create ScrollTrigger for the horizontal scrolling
+            ScrollTrigger.create({
+                trigger: horizontalSection,
+                start: "top top",
+                end: () => `+=${window.innerHeight * panels.length}`,
+                pin: true,
+                animation: horizontalTween,
+                scrub: 1,
+                snap: {
+                    snapTo: 1 / (panels.length - 1),
+                    duration: 0.5,
+                    delay: 0.1
+                },
+                invalidateOnRefresh: true,
+                anticipatePin: 1
+            });
+
+            // Add individual panel animations
+            panels.forEach((panel, index) => {
+                const content = panel.querySelector('.panel-content');
+                const logo = panel.querySelector('.business-logo img');
+                const title = panel.querySelector('.business-title');
+                const description = panel.querySelector('.business-description');
+                const features = panel.querySelectorAll('.feature-tag');
+                const category = panel.querySelector('.business-category');
+
+                // Create timeline for each panel's content
+                const panelTimeline = gsap.timeline({ paused: true });
+
+                if (content) {
+                    panelTimeline.fromTo(content, 
+                        { opacity: 0, y: 50 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                    );
+                }
+
+                if (logo) {
+                    panelTimeline.fromTo(logo, 
+                        { scale: 0.8, rotation: -10, opacity: 0 },
+                        { scale: 1, rotation: 0, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+                        "-=0.6"
+                    );
+                }
+
+                if (category) {
+                    panelTimeline.fromTo(category,
+                        { x: -30, opacity: 0 },
+                        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+                        "-=0.4"
+                    );
+                }
+
+                if (title) {
+                    panelTimeline.fromTo(title,
+                        { x: -50, opacity: 0 },
+                        { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+                        "-=0.3"
+                    );
+                }
+
+                if (description) {
+                    panelTimeline.fromTo(description,
+                        { x: -30, opacity: 0 },
+                        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+                        "-=0.2"
+                    );
+                }
+
+                if (features.length) {
+                    features.forEach((feature, i) => {
+                        panelTimeline.fromTo(feature,
+                            { y: 20, opacity: 0, scale: 0.8 },
+                            { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+                            `-=${0.1 * (features.length - i)}`
+                        );
+                    });
+                }
+
+                // Trigger animation when panel comes into view
+                ScrollTrigger.create({
+                    trigger: panel,
+                    start: "left 80%",
+                    end: "right 20%",
+                    horizontal: true,
+                    toggleActions: "play none none reverse",
+                    animation: panelTimeline,
+                    invalidateOnRefresh: true
+                });
+            });
+
+            // Add background color transitions
+            panels.forEach((panel, index) => {
+                const bgColor = panel.getAttribute('data-bg');
+                if (bgColor) {
+                    ScrollTrigger.create({
+                        trigger: panel,
+                        start: "left center",
+                        end: "right center",
+                        horizontal: true,
+                        onEnter: () => {
+                            gsap.to(horizontalSection, {
+                                backgroundColor: bgColor + '20',
+                                duration: 0.8,
+                                ease: "power2.out"
+                            });
+                        },
+                        onLeave: () => {
+                            gsap.to(horizontalSection, {
+                                backgroundColor: 'transparent',
+                                duration: 0.8,
+                                ease: "power2.out"
+                            });
+                        },
+                        onEnterBack: () => {
+                            gsap.to(horizontalSection, {
+                                backgroundColor: bgColor + '20',
+                                duration: 0.8,
+                                ease: "power2.out"
+                            });
+                        },
+                        onLeaveBack: () => {
+                            gsap.to(horizontalSection, {
+                                backgroundColor: 'transparent',
+                                duration: 0.8,
+                                ease: "power2.out"
+                            });
+                        },
+                        invalidateOnRefresh: true
+                    });
+                }
+            });
+
+            // Add section title animation - Make sure it's visible
+            const sectionTitle = document.querySelector('.suri-title');
+            if (sectionTitle) {
+                gsap.fromTo(sectionTitle,
+                    { 
+                        y: 50, 
+                        opacity: 0,
+                        scale: 0.9,
+                        filter: "blur(10px)"
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)",
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: sectionTitle,
+                            start: "top 90%",
+                            toggleActions: "play none none reverse",
+                            invalidateOnRefresh: true
+                        }
+                    }
+                );
+            }
+
+            // Refresh ScrollTrigger on window resize
+            window.addEventListener('resize', () => {
+                ScrollTrigger.refresh();
+            });
         }
     </script>
 </body>
