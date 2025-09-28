@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="icon" type="image/svg+xml" href="assests/logos/Bock Text White Resized-01.svg">
+     <link rel="icon" type="image/svg+xml" sizes="64x64" href="assests/logos/Bock Text White Resized-01.svg">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -152,15 +152,23 @@
     }
 
     .gradient-text {
-      background: linear-gradient(to right, #1F8EF1, #6C5CE7);
+      background: linear-gradient(-45deg, #1F8EF1, #9B59B6, #00A8FF, #20C997);
+      background-size: 400% 400%;
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 4s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 
-<body class="bg-[#030014] font-space">
+<body class="bg-space-navy font-space">
   <!-- Include Header -->
   <div id="header-container"></div>
 
@@ -169,12 +177,13 @@
     <div class="max-w-7xl mx-auto relative z-10">
       <!-- Title -->
       <div class="text-center mb-12 sm:mb-20">
-        <span class="relative inline-block font-cyber text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-500 tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase font-light cursor-pointer
-                      border-t-2 border-b-2 border-transparent
-                      hover:border-t-current hover:border-b-current
-                      transition-[border-width,color] duration-500 ease-in-out mobile-text-break">
-          P R O G R E S S
-        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6">
+          <span class="text-white">OUR</span>
+          <br class="sm:hidden">
+          <span class="gradient-text">
+            PROGRESS
+          </span>
+        </h1>
       </div>
 
       <!-- Progress Cards -->
@@ -182,10 +191,10 @@
         <!-- 2022 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">2022 - 19th & 20th
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">2022 - 19th & 20th
                   August</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -246,7 +255,7 @@
 
         <!-- 2023 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -256,7 +265,7 @@
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2023 - 2nd to 6th
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">2023 - 2nd to 6th
                   January</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -303,10 +312,10 @@
 <!--2023 card-->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">16th Jan 2023 - Present</span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">16th Jan 2023 - Present</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: Recognised by
@@ -364,7 +373,7 @@
 
 <!--202x card  -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -374,7 +383,7 @@
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">30th Sept - 23rd March</span>
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">30th Sept - 23rd March</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place:Semi-Finalist (Top 30/4000) <br class="hidden sm:block" />
@@ -423,10 +432,10 @@
         <!--some-->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">23rd & 24th June</span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">23rd & 24th June</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: First at National Social Hackathon<br class="hidden sm:block" />by
@@ -487,7 +496,7 @@
 
         <!-- 2023 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -497,7 +506,7 @@
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">30th Nov </span>
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">30th Nov </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Participated & Certified for Solar <br class="hidden sm:block" />
@@ -547,10 +556,10 @@ The Conference is the soul of Bengaluru Tech Summit, a platform for knowledge ex
         <!--2023 card-->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">2023:23-24th June</span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">2023:23-24th June</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: CMRIT</h2>
@@ -599,7 +608,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
 
         <!--2022 card-->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -609,7 +618,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2023 - 6th
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">2023 - 6th
                   November</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -629,10 +638,10 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
         <!-- 2024 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">2024 - 8 Feb 
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">2024 - 8 Feb 
                   </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -659,7 +668,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
 
         <!-- 2024 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -669,7 +678,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2024 - 22th September </span>
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">2024 - 22th September </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   DPIIT<br class="hidden sm:block" />
@@ -689,10 +698,10 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
         <!-- 2024 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue font-cyber text-sm sm:text-base mobile-subtitle">2024 - 15 September
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">2024 - 15 September
                   </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -717,7 +726,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
         </div>
 
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-[#030014]/80 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="order-2 md:order-1">
                 <div class="progress-image rounded-2xl overflow-hidden">
@@ -727,7 +736,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
               </div>
 
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple font-cyber text-sm sm:text-base mobile-subtitle">2024 - 16 to 17th
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">2024 - 16 to 17th
                   October</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
@@ -767,7 +776,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
     <div class="max-w-7xl mx-auto px-4 text-center">
       <a href="assests/pdfs/progress.pdf" download
         class="inline-flex items-center gap-3 bg-gradient-to-r from-electric-blue to-bock-purple p-[2px] rounded-full group transition-all hover:scale-105">
-        <span class="px-8 py-4 bg-[#030014] rounded-full inline-flex items-center gap-2 text-white font-cyber text-lg">
+        <span class="px-8 py-4 bg-space-navy rounded-full inline-flex items-center gap-2 text-white text-lg">
           <span>Download Complete Journey</span>
           <i class="ph ph-arrow-down text-xl group-hover:translate-y-1 transition-transform"></i>
         </span>
