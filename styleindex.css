@@ -2366,7 +2366,7 @@ li.dropdown {
 
 .business-panels {
   display: flex;
-  width: 800vw; /* 8 panels × 100vw each */
+  width: 900vw; /* 9 panels × 100vw each */
   height: 100vh;
   position: relative;
 }
@@ -2472,7 +2472,11 @@ li.dropdown {
 }
 
 .business-panel[data-bg="#FFA500"] .business-title {
-  color: #fdc03b;
+  color: #FFA500;
+}
+
+.business-panel[data-bg="#8B4513"] .business-title {
+  color: #8B4513;
 }
 
 .business-panel[data-bg="#6C5CE7"] .business-title {
@@ -2550,6 +2554,10 @@ li.dropdown {
 
 .business-panel[data-bg="#FFA500"] {
   background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(3, 0, 20, 0.95) 100%);
+}
+
+.business-panel[data-bg="#8B4513"] {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(3, 0, 20, 0.95) 100%);
 }
 
 .business-panel[data-bg="#6C5CE7"] {
@@ -2660,7 +2668,7 @@ li.dropdown {
   }
   
   .business-category {
-    font-size: 0.8rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     padding: 0.4rem 0.8rem;
     margin-bottom: 0.8rem;
   }
@@ -2711,6 +2719,27 @@ li.dropdown {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Ecosystem section improvements */
+.ecosystem-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  animation: scroll-left 30s linear infinite;
+  width: fit-content;
+  min-width: 200%;
+}
+
+.ecosystem-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .ecosystem-track {
+    gap: 1rem;
+    animation-duration: 25s;
   }
 }
 

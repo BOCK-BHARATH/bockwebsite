@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOCK - Empowering the World!</title>
-    <link rel="icon" type="image/svg+xml" sizes="64x64" href="assests/logos/Bock Text White Resized-01.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="assests/logos/Bock Text White Resized-01.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Professional Font System -->
     <link
@@ -39,7 +39,7 @@
                         'bock-green': '#20C997',
                         'bock-purple': '#9B59B6',
                         'bock-red': '#E74C3C',
-                        'bock-yellow': '#FFEA00'
+                        'bock-yellow': '#FFA500'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -583,10 +583,7 @@
             box-shadow: 0 10px 30px rgba(31, 142, 241, 0.4);
         }
 
-        /* Removed slide indicators as requested */
-
-        /* Enhanced Products Grid with Modern Animations - COMMENTED OUT */
-        /*
+       
         .product-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -1473,7 +1470,7 @@
     </style>
 </head>
 
-<body class="bg-space-navy">
+<body class="bg-space-navy text-white">
     <!-- Include Header -->
     <div id="header-container"></div>
 
@@ -1481,7 +1478,7 @@
     <section class="relative h-screen min-h-[900px] overflow-hidden">
         <!-- Background Video -->
         <video src="assests/techvid.mp4" muted loop autoplay
-            class="absolute inset-0 h-full w-auto object-contain z-0"></video>
+            class="absolute inset-0 h-full w-full object-cover z-0"></video>
 
         <!-- Enhanced Animated Background -->
         <div class="absolute inset-0">
@@ -1505,59 +1502,55 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 flex flex-col justify-center min-h-screen">
             <div class="text-center mb-12 sm:mb-16">                
                 <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
-                    <span class="block mb-4 text-white/90 animate-pulse-slow">
+                    <span class="block mb-4 text-white/90">
                         WELCOME TO
                     </span>
                     <div class="flex justify-center items-center gap-6">
-                        <span class="bock-logo text-6xl sm:text-7xl md:text-8xl lg:text-8xl font-heading tracking-wider font-black text-transparent drop-shadow-2xl" style="-webkit-text-stroke: 3px white;">
+                        <span class="bock-logo text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading tracking-wider font-black text-white drop-shadow-2xl" style="text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
                             BOCK
                         </span>
                     </div>
                 </h1>
 
                 <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 font-light leading-relaxed max-w-4xl mx-auto">
-                    Empowering <span id="changing-word" class="text-electric-blue font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent">People</span> 
-                    <br class="hidden sm:block">Through Revolutionary Technology
+                    <span class="text-white/90">Empowering</span> <span id="changing-word" class="text-electric-blue font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent inline-block min-w-[140px] text-left">People</span> 
                 </h2>
                 <style>
-                    @keyframes fadeInOut {
-
-                        0%,
-                        100% {
-                            opacity: 0;
-                            transform: translateY(10px);
-                        }
-
-                        20%,
-                        80% {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-
                     #changing-word {
                         display: inline-block;
-                        animation: fadeInOut 2s ease-in-out infinite;
+                        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+                        min-width: 140px;
+                        text-align: left;
+                    }
+
+                    .fade-transition {
+                        opacity: 0;
+                        transform: translateY(10px);
                     }
                 </style>
 
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
-                        const words = ['People', 'World', 'Society'];
+                        const words = ['People', 'Society', 'World'];
                         const changingWord = document.getElementById('changing-word');
                         let currentIndex = 0;
 
-                        setInterval(function () {
-                            currentIndex = (currentIndex + 1) % words.length;
-                            changingWord.style.opacity = 0;
-                            changingWord.style.transform = 'translateY(10px)';
-
+                        function changeWord() {
+                            // Add fade out effect
+                            changingWord.classList.add('fade-transition');
+                            
                             setTimeout(function () {
+                                // Change to next word
+                                currentIndex = (currentIndex + 1) % words.length;
                                 changingWord.textContent = words[currentIndex];
-                                changingWord.style.opacity = 1;
-                                changingWord.style.transform = 'translateY(0)';
-                            }, 500);
-                        }, 2000);
+                                
+                                // Add fade in effect
+                                changingWord.classList.remove('fade-transition');
+                            }, 300);
+                        }
+
+                        // Start the word changing cycle
+                        setInterval(changeWord, 2500);
                     });
                 </script>
 
@@ -1566,22 +1559,22 @@
 
                         <div class="text-2xl sm:text-3xl md:text-4xl text-white font-bold sanskrit-quote"
                             style="font-family: 'Noto Serif Devanagari', serif;">
-                            वसुधैव कुटुम्बकम्
+                            वसुधैव कुटुम्बकम् |
                         </div>
 
-                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-bold"
                             style="font-family: 'Sahitya', serif;">
-                            असतो माँ सद-गमय
+                            असतो माँ सद-गमय |
                         </div>
 
-                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-bold"
                             style="font-family: 'Tiro Devanagari Marathi', serif;">
-                            तमसो माँ ज्योतिर्-गमय
+                            तमसो माँ ज्योतिर्-गमय |
                         </div>
 
-                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed"
+                        <div class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-bold"
                             style="font-family: 'Sahitya', serif;">
-                            मृत्योर्-माँ अमृतं गमय
+                            मृत्योर्-माँ अमृतं गमय |
                         </div>
 
                     </div>
@@ -1635,11 +1628,26 @@
     </section>
 
     <!-- Horizontal Scrolling Businesses Section -->
-    <section class="horizontal-business-section">
+    <section class="horizontal-business-section py-8 sm:py-12">
         <div class="horizontal-container">
             <!-- Horizontal Scrolling Container -->
             <div class="horizontal-scroll-wrapper">
                 <div class="business-panels">
+                    <!-- Business Panel 0: Overview -->
+                    <div class="business-panel" data-bg="#1F8EF1">
+                        <div class="panel-content">
+                            <div class="business-logo">
+                                <img src="assests/logos/Bock Text White Resized-01.svg" alt="BOCK Logo">
+                            </div>
+                            <div class="business-info">
+                                <div class="business-category">BOCK</div>
+                                
+                                <p class="business-description">
+                                    BOCK is a conglomerate of 8 innovative subsidiaries, each tackling global challenges through cutting-edge technology. From sustainable transportation to automated healthcare, we're building the future across multiple industries with a unified vision of empowering humanity.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Business Panel 1: Automotive -->
                     <div class="business-panel" data-bg="#1F8EF1">
                         <div class="panel-content">
@@ -1696,7 +1704,7 @@
                     </div>
 
                     <!-- Business Panel 4: AI -->
-                    <div class="business-panel" data-bg="#E74C3C">
+                    <div class="business-panel" data-bg="#8B4513">
                         <div class="panel-content">
                             <div class="business-logo">
                                 <img src="assests/logos/AI.svg" alt="AI">
@@ -1750,10 +1758,10 @@
                     </div>
 
                     <!-- Business Panel 7: Institute -->
-                    <div class="business-panel" data-bg="#00A8FF">
+                    <div class="business-panel" data-bg="#20C997">
                         <div class="panel-content">
                             <div class="business-logo">
-                                <img src="assests/logos/health.svg" alt="Institute">
+                                <img src="assests/logos/Institutes.png" alt="Institute">
                             </div>
                             <div class="business-info">
                                 <div class="business-category">BOCK</div>
@@ -1766,17 +1774,17 @@
                     </div>
 
                     <!-- Business Panel 8: Force -->
-                    <div class="business-panel" data-bg="#FFEA00">
+                    <div class="business-panel" data-bg="#FFA500">
                         <div class="panel-content">
                             <div class="business-logo">
-                                <img src="assests/logos/Space.svg" alt="Force">
+                                <img src="assests/logos/Force.png" alt="Force">
                             </div>
                             <div class="business-info">
                                 <div class="business-category">BOCK</div>
                                 <h3 class="business-title">FORCE</h3>
                                 <p class="business-description">
-                                    COMING SOON                                </p>
-                                
+                                    COMING SOON
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1985,25 +1993,25 @@
         </div>
     </section>
 
-    <!-- Footer Separator -->
-    <div class="footer-separator">
-        <div class="separator-line">
-            <div class="separator-gradient"></div>
-        </div>
-    </div>
-
     <!-- Rotating Logos Section -->
-    <section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-space-navy to-[#030014]">
+    <section class="relative py-8 sm:py-12 lg:py-16 overflow-hidden bg-gradient-to-b from-space-navy to-[#030014]">
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-10 left-10 w-32 h-32 bg-electric-blue/5 rounded-full blur-2xl animate-pulse"></div>
             <div class="absolute bottom-10 right-10 w-40 h-40 bg-bock-purple/5 rounded-full blur-2xl animate-pulse animation-delay-2000"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" x-data="{ visible: false }" x-intersect="visible = true">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6"
+                    :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                    <span class="text-white">PRO</span>
+                </h1>
+            </div>
             <!-- Rotating Ecosystem Images Container -->
-            <div class="relative h-24 sm:h-32 lg:h-40 overflow-hidden">
-                <div class="ecosystem-track flex items-center gap-8 sm:gap-12 lg:gap-16 animate-scroll-left">
-                    <!-- First set of ecosystem images -->
+            <div class="relative h-24 sm:h-32 lg:h-40 overflow-hidden w-full">
+                <div class="ecosystem-track flex items-center gap-6 sm:gap-8 lg:gap-10 animate-scroll-left">
+                    <!-- All available ecosystem images - First Set -->
                     <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
                         <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
@@ -2056,7 +2064,7 @@
                         <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                     
-                    <!-- Duplicate set for seamless loop -->
+                    <!-- Duplicate set for seamless infinite loop -->
                     <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
                         <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
@@ -2108,6 +2116,39 @@
                     <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
                         <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
                 </div>
             </div>
         </div>
@@ -2123,7 +2164,20 @@
             }
             
             .animate-scroll-left {
-                animation: scroll-left 20s linear infinite;
+                animation: scroll-left 45s linear infinite;
+                width: 600%;
+                min-width: max-content;
+            }
+            
+            .ecosystem-track {
+                will-change: transform;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+            
+            .ecosystem-track > * {
+                flex-shrink: 0;
             }
             
             .logos-track:hover {
@@ -2146,7 +2200,12 @@
             }
         </style>
     </section>
-
+    <!-- Footer Separator -->
+    <div class="footer-separator">
+        <div class="separator-line">
+            <div class="separator-gradient"></div>
+        </div>
+    </div>
     <div id="footer-container"></div>
 
     <script>
@@ -2303,7 +2362,6 @@
             });
         }
 
-        // Removed indicator click functionality as requested
 
         // Enhanced carousel auto-advance with pause on interaction
         let carouselInterval;
