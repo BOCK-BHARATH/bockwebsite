@@ -1819,10 +1819,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" 
                  x-data="{ 
                      visible: false,
-                     counter1: { current: 0, target: 500 },
-                     counter2: { current: 0, target: 110 },
-                     counter3: { current: 0, target: 8 },
-                     counter4: { current: 0, target: 3 },
+                     counter1: { current: 0, target: 8 },
+                     counter2: { current: 0, target: 30 },
+                     counter3: { current: 0, target: 50 },
+                     counter4: { current: 0, target: 250 },
                      startAnimation(counter, duration = 2000) {
                          const increment = counter.target / (duration / 16);
                          const timer = setInterval(() => {
@@ -1848,10 +1848,10 @@
                     <div class="bg-gradient-to-br from-electric-blue/10 to-electric-blue/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:transform hover:scale-105">
                         <div class="text-center">
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-electric-blue mb-2">
-                                <span x-text="Math.floor(counter1.current)">0</span>+
+                                <span x-text="Math.floor(counter1.current)">0</span>
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Applications</div>
-                            <div class="text-sm sm:text-base text-gray-300">Received</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Subsidiary</div>
+                            <div class="text-sm sm:text-base text-gray-300">Businesses</div>
                         </div>
                         <div class="absolute inset-0 bg-electric-blue/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1865,8 +1865,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-green mb-2">
                                 <span x-text="Math.floor(counter2.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Recruited</div>
-                            <div class="text-sm sm:text-base text-gray-300">Team Members</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Products</div>
+                            <div class="text-sm sm:text-base text-gray-300">Under Development</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-green/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1880,8 +1880,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-purple mb-2">
                                 <span x-text="Math.floor(counter3.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Colleges</div>
-                            <div class="text-sm sm:text-base text-gray-300">Reached (Across India)</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Industry Sectors</div>
+                            <div class="text-sm sm:text-base text-gray-300">Planned</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1895,8 +1895,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-orange mb-2">
                                 <span x-text="Math.floor(counter4.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Incubation</div>
-                            <div class="text-sm sm:text-base text-gray-300">Centers Expected</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Engineers</div>
+                            <div class="text-sm sm:text-base text-gray-300">Worked</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-orange/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1907,10 +1907,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8" 
                  x-data="{ 
                      visible: false,
-                     counter5: { current: 0, target: 180 },
-                     counter6: { current: 0, target: 70 },
+                     counter5: { current: 0, target: 40,000 },
+                     counter6: { current: 0, target: 250 },
                      counter7: { current: 0, target: 4 },
-                     counter8: { current: 0, target: 10 },
+                     counter8: { current: 0, target: 2 },
                      startAnimation(counter, duration = 2000) {
                          const increment = counter.target / (duration / 16);
                          const timer = setInterval(() => {
@@ -1938,8 +1938,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-neural mb-2">
                                 <span x-text="Math.floor(counter5.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Internship</div>
-                            <div class="text-sm sm:text-base text-gray-300">Opportunities</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Hours</div>
+                            <div class="text-sm sm:text-base text-gray-300">Engineering Work</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-neural/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1953,8 +1953,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-red mb-2">
                                 <span x-text="Math.floor(counter6.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Vacancies</div>
-                            <div class="text-sm sm:text-base text-gray-300">Available</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Internship</div>
+                            <div class="text-sm sm:text-base text-gray-300">Opportunities</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-red/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1968,8 +1968,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bock-yellow mb-2">
                                 <span x-text="Math.floor(counter7.current)">0</span>+
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Expected</div>
-                            <div class="text-sm sm:text-base text-gray-300">MoUs</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Colleges</div>
+                            <div class="text-sm sm:text-base text-gray-300">Hirings</div>
                         </div>
                         <div class="absolute inset-0 bg-bock-yellow/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -1983,8 +1983,8 @@
                             <div class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent mb-2">
                                 <span x-text="Math.floor(counter8.current)">0</span>
                             </div>
-                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">Months</div>
-                            <div class="text-sm sm:text-base text-gray-300">Expected Investment</div>
+                            <div class="text-lg sm:text-xl font-semibold text-white mb-2">MoUs</div>
+                            <div class="text-sm sm:text-base text-gray-300">Signed</div>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-bock-purple/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -2815,5 +2815,6 @@
 </body>
 
 </html>
+
 
 
