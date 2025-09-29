@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOCK - Empowering the World!</title>
-    <link rel="icon" type="image/png" sizes="48x48" href="assests/logos/Bock Text White Resized-01.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assests/logos/Bock main.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Professional Font System -->
     <link
@@ -1512,15 +1512,24 @@
                     </div>
                 </h1>
 
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 font-light leading-relaxed max-w-4xl mx-auto">
-                    <span class="text-white/90">Empowering</span> <span id="changing-word" class="text-electric-blue font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent inline-block min-w-[140px] text-left">People</span> 
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-12 font-light leading-relaxed max-w-4xl mx-auto text-center">
+                    <span class="text-white/90">Empowering</span> <span id="changing-word" class="text-electric-blue font-bold bg-gradient-to-r from-electric-blue to-bock-purple bg-clip-text text-transparent inline-block min-w-[140px] text-center mx-auto">People</span> 
                 </h2>
                 <style>
                     #changing-word {
                         display: inline-block;
                         transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
                         min-width: 140px;
-                        text-align: left;
+                        text-align: center;
+                    }
+
+                    @media (max-width: 768px) {
+                        #changing-word {
+                            display: block;
+                            width: 100%;
+                            text-align: center;
+                            margin: 0 auto;
+                        }
                     }
 
                     .fade-transition {
@@ -1634,14 +1643,13 @@
             <div class="horizontal-scroll-wrapper">
                 <div class="business-panels">
                     <!-- Business Panel 0: Overview -->
-                    <div class="business-panel" data-bg="#1F8EF1">
+                    <div class="business-panel" data-bg="#FFFFFF">
                         <div class="panel-content">
                             <div class="business-logo">
-                                <img src="assests/logos/Bock Text White Resized-01.svg" alt="BOCK Logo">
+<img src="assests/logos/Bock main.png" alt="BOCK Logo" style="filter: brightness(0) invert(1);">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                
+                                <h3 class="business-title">BOCK</h3>
                                 <p class="business-description">
                                     BOCK is a conglomerate of 8 innovative subsidiaries, each tackling global challenges through cutting-edge technology. From sustainable transportation to automated healthcare, we're building the future across multiple industries with a unified vision of empowering humanity.
                                 </p>
@@ -1655,8 +1663,7 @@
                                 <img src="assests/logos/Automative.svg" alt="Automotive">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">AUTOMOTIVE</h3>
+                                <h3 class="business-title">BOCK AUTOMOTIVE</h3>
                                 <p class="business-description">
                                     We have built a concept vehicle called a Self-Powered Vehicle (SPVs) to solve all these. The
                                     energy required is met by just running the vehicle itself, and 100% of the energy is renewable
@@ -1673,8 +1680,7 @@
                                 <img src="assests/logos/Foods.svg" alt="Foods">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">FOODS</h3>
+                                <h3 class="business-title">BOCK FOODS</h3>
                                 <p class="business-description">
                                     We at BockFoods have a mission of providing affordable and nutritious food to all. You will be
                                     able to get food that is much more nutritious and tasty at half of the price that you are paying
@@ -1692,8 +1698,7 @@
                                 <img src="assests/logos/Space.svg" alt="Space">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">SPACE</h3>
+                                <h3 class="business-title">BOCK SPACE</h3>
                                 <p class="business-description">
                                     Bock Space is a space research organization managing 4 bodies under it. Bock Space will be a
                                     robust system for space technology that is highly ambitious in taking mankind towards
@@ -1710,8 +1715,7 @@
                                 <img src="assests/logos/AI.svg" alt="AI">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">AI</h3>
+                                <h3 class="business-title">BOCK AI</h3>
                                 <p class="business-description">
                                     It is the backbone of Bock, much automation work of other subsidiary companies is done at Bock
                                     AI. Starting with the building of Autonomous Vehicle Technology for the automobiles that were
@@ -1728,8 +1732,7 @@
                                 <img src="assests/logos/health.svg" alt="Health">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">HEALTH</h3>
+                                <h3 class="business-title">BOCK HEALTH</h3>
                                 <p class="business-description">
                                     At Bock Health, we are revolutionizing the healthcare landscape by the introduction of Automated
                                     Hospitals. Imagine a world where you walk into hospitals where no human intervention is there
@@ -1746,8 +1749,7 @@
                                 <img src="assests/logos/Chain.svg" alt="Chain">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">CHAIN</h3>
+                                <h3 class="business-title">BOCK CHAIN</h3>
                                 <p class="business-description">
                                     At Bock Chain, we are building our own blockchain and will revolutionize the internet landscape
                                     by addressing its inherent challenges. Our focus lies in empowering users through
@@ -1764,8 +1766,7 @@
                                 <img src="assests/logos/Institutes.png" alt="Institute">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">INSTITUTE</h3>
+                                <h3 class="business-title">BOCK INSTITUTE</h3>
                                 <p class="business-description">
                                     COMING SOON
                                 </p>
@@ -1780,8 +1781,7 @@
                                 <img src="assests/logos/Force.png" alt="Force">
                             </div>
                             <div class="business-info">
-                                <div class="business-category">BOCK</div>
-                                <h3 class="business-title">FORCE</h3>
+                                <h3 class="business-title">BOCK FORCE</h3>
                                 <p class="business-description">
                                     COMING SOON
                                 </p>
@@ -2149,6 +2149,23 @@
                     <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
                         <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
+                    
+                    <!-- Duplicate first few images for seamless loop -->
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/2.png" alt="Ecosystem Partner 2" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/3.jpg" alt="Ecosystem Partner 3" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/4.jpg" alt="Ecosystem Partner 4" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <img src="assests/ecosystem/5.png" alt="Ecosystem Partner 5" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
                 </div>
             </div>
         </div>
@@ -2159,7 +2176,7 @@
                     transform: translateX(0);
                 }
                 100% {
-                    transform: translateX(-50%);
+                    transform: translateX(-100%);
                 }
             }
             
