@@ -196,22 +196,30 @@
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">2022 - 19th & 20th
-                  August</span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">19th & 20th
+                  August 2022</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: Semi-Finalist EYSS - 2022<br class="hidden sm:block" />(Eco Youth Startup
                   Summit)</h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  This is my 1st project (Startup): Bock Automotive Self-Powered
-                  Vehicles (SPV): The Future of Transportation. We believe in
-                  empowering the automobile industry by making SPVs. We concentrate
-                  on making cars that can use renewable energy as a source of power
-                  (sounds impossible right..? Remember, the same thing happened with
-                  EVs 20 years ago, but today it's a grand success). We are also
-                  concentrating on giving the car for most affordable prices
-                  inculcating most technologies backed by AI etc.
+                  CMR University along with Paryavaran Gatividhi and Rainmatter Foundation 
+                  organised the two-day-long summit on 'EYSS - Eco Youth Start-up Competition 
+                  and Summit 2022'. The summit aimed to create an ecosystem in India for an 
+                  environmentally sustainable future. The competition saw registration from 
+                  over 150 participants from across India. The ceremony was graced by Thaawar 
+                  Chand Gehlot, Governor of Karnataka, Rickey Kej the Grammy Award-winning music 
+                  composer, Gopal Arya Ji All India Convenor from Paryavaran Sanrakshan Gathividhi 
+                  and Shri KC Ramamurthy, Former Member of Parliament, Rajya Sabha and Chairman of 
+                  CMR Group of Institutions.
+
+                  200 environment-friendly startup ideas were submitted from across South India at 
+                  the entry-level. On the 2nd day of The Eco Youth Summit, 71 semi-finalists presented 
+                  their startup ideas, out of which, 6 ideas made it into the finals. On August 20, 
+                  the 6 finalists presented their eco-friendly ideas to the jury members who are part 
+                  of various venture capital firms and incubators, and 3 winners were selected from 
+                  the categories of Ideation, Product, and Go-to-market.
                 </p>
 
 
@@ -240,6 +248,15 @@
 
               <span id="more" class="text-white text-sm sm:text-base">
                 <br /><br />
+                This is my 1st project (Startup): Bock Automotive Self-Powered
+                Vehicles (SPV): The Future of Transportation. We believe in
+                empowering the automobile industry by making SPVs. We concentrate
+                on making cars that can use renewable energy as a source of power
+                (sounds impossible right..? Remember, the same thing happened with
+                EVs 20 years ago, but today it's a grand success). We are also
+                concentrating on giving the car for most affordable prices
+                inculcating most technologies backed by AI etc.
+                
                 Team Members: <br />
                 Rakesh S B (Design, Aerodynamics, Fuel) <br />
                 Pratham Sinha (Working Mechanism & Fuel) <br />
@@ -250,6 +267,62 @@
                 Aayush Kumar (Working Mechanism & Fuel) <br />
                 Harsh Gupta (Design & Simulation) <br />
                 Harsh Kumar (Working Mechanism & Fuel)
+              </span>
+            </div>
+          </div>
+        </div>
+
+                <!-- 2023 Card -->
+        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+              <div class="order-2 md:order-1">
+                <div class="progress-image rounded-2xl overflow-hidden">
+                  <img src="assests/progress/2.png" alt="Solar Science Workshop"
+                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+
+              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">10th Nov 2022</span>
+                <h2
+                  class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
+                  Place: IDEA HUNT - 2022 Finalist <br class="hidden sm:block" />
+                  CMRIT Incubation Centre & IIC <br class="hidden sm:block" />
+                  Institute Innovation Council, <br class="hidden sm:block" />
+                  CMRIT</h2>
+                <p
+                  class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                  The objective of this event is to promote & support the untapped 
+                  creativity of individuals and to promote the adoption of the 
+                  latest technologies in Science & Engineering and also to encourage 
+                  CMRIT students to develop innovative products. IDEA HUNT - 2022 
+                  was an event organised by the CMRIT Incubation Centre & IIC Institute 
+                  Innovation Council. Our idea was shortlisted & was uploaded to the 
+                  YUKTI portal at the institute level. <br /><br />
+                  Aditya L1 is India's first space-based observatory mission to
+                  study the Sun.
+                </p>
+
+                <button class="group flex items-center gap-2 text-bock-purple mobile-button">
+                  <span class="text-sm sm:text-base">Read More</span>
+                  <i class="ph ph-arrow-right text-lg sm:text-xl group-hover:translate-x-1 transition-transform"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Expanded Content -->
+            <div x-show="expanded" x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform -translate-y-4"
+              x-transition:enter-end="opacity-100 transform translate-y-0"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100 transform translate-y-0"
+              x-transition:leave-end="opacity-0 transform -translate-y-4" class="mt-8 border-t border-white/10 pt-8">
+              <span id="more3" class="text-white"> 
+              Team members:
+              Rakesh S B
+              Harsh Kumar
+              Adarsh Vinod 
               </span>
             </div>
           </div>
@@ -325,7 +398,7 @@
                   Govt. of India.</h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                   We were invited to the Indian Space Industry Meet 2.0. Space
+                  We were invited to the Indian Space Industry Meet 2.0. Space
                   Industry Meet 2.0 is in progress at AMA Ahmedabad now. The
                   content-rich agenda of the meeting includes business opportunities
                   in space data products, SATCOM, etc. We BockSpace is one among 65
@@ -819,6 +892,7 @@ Bock Foods made waves at the National Social Hackathon, earning well-deserved at
 </html>
 
 </html>
+
 
 
 
