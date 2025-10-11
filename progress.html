@@ -5,7 +5,7 @@
   <title> Bock Journey </title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-         <link rel="icon" type="image/png" sizes="64x64" href="assests/logos/Bock main.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assests/logos/Bock main.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -24,9 +24,9 @@
             'bock-red': '#E74C3C'
           },
           fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'heading': ['Montserrat', 'sans-serif'],
-                        'body': ['Inter', 'sans-serif'],
+            'sans': ['Inter', 'sans-serif'],
+            'heading': ['Montserrat', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
           },
           animation: {
             'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -161,11 +161,49 @@
       -webkit-text-fill-color: transparent;
       animation: gradient 4s ease infinite;
     }
-    
+
     @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+  <style>
+    .progress-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .progress-card:nth-child(odd) .grid {
+        grid-auto-flow: dense;
+      }
+
+      .progress-card:nth-child(odd) .order-2 {
+        order: 2;
+      }
+
+      .progress-card:nth-child(odd) .order-1 {
+        order: 1;
+      }
+
+      .progress-card:nth-child(even) .order-2 {
+        order: 1;
+      }
+
+      .progress-card:nth-child(even) .order-1 {
+        order: 2;
+      }
     }
   </style>
 </head>
@@ -204,21 +242,21 @@
                   Summit)</h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  CMR University along with Paryavaran Gatividhi and Rainmatter Foundation 
-                  organised the two-day-long summit on 'EYSS - Eco Youth Start-up Competition 
-                  and Summit 2022'. The summit aimed to create an ecosystem in India for an 
-                  environmentally sustainable future. The competition saw registration from 
-                  over 150 participants from across India. The ceremony was graced by Thaawar 
-                  Chand Gehlot, Governor of Karnataka, Rickey Kej the Grammy Award-winning music 
-                  composer, Gopal Arya Ji All India Convenor from Paryavaran Sanrakshan Gathividhi 
-                  and Shri KC Ramamurthy, Former Member of Parliament, Rajya Sabha and Chairman of 
+                  CMR University along with Paryavaran Gatividhi and Rainmatter Foundation
+                  organised the two-day-long summit on 'EYSS - Eco Youth Start-up Competition
+                  and Summit 2022'. The summit aimed to create an ecosystem in India for an
+                  environmentally sustainable future. The competition saw registration from
+                  over 150 participants from across India. The ceremony was graced by Thaawar
+                  Chand Gehlot, Governor of Karnataka, Rickey Kej the Grammy Award-winning music
+                  composer, Gopal Arya Ji All India Convenor from Paryavaran Sanrakshan Gathividhi
+                  and Shri KC Ramamurthy, Former Member of Parliament, Rajya Sabha and Chairman of
                   CMR Group of Institutions.<br /><br />
 
-                  200 environment-friendly startup ideas were submitted from across South India at 
-                  the entry-level. On the 2nd day of The Eco Youth Summit, 71 semi-finalists presented 
-                  their startup ideas, out of which, 6 ideas made it into the finals. On August 20, 
-                  the 6 finalists presented their eco-friendly ideas to the jury members who are part 
-                  of various venture capital firms and incubators, and 3 winners were selected from 
+                  200 environment-friendly startup ideas were submitted from across South India at
+                  the entry-level. On the 2nd day of The Eco Youth Summit, 71 semi-finalists presented
+                  their startup ideas, out of which, 6 ideas made it into the finals. On August 20,
+                  the 6 finalists presented their eco-friendly ideas to the jury members who are part
+                  of various venture capital firms and incubators, and 3 winners were selected from
                   the categories of Ideation, Product, and Go-to-market.
                 </p>
 
@@ -248,32 +286,32 @@
 
               <span id="more" class="text-white text-sm sm:text-base">
                 <p>
-                This is my 1st project (Startup): Bock Automotive Self-Powered
-                Vehicles (SPV): The Future of Transportation. We believe in
-                empowering the automobile industry by making SPVs. We concentrate
-                on making cars that can use renewable energy as a source of power
-                (sounds impossible right..? Remember, the same thing happened with
-                EVs 20 years ago, but today it's a grand success). We are also
-                concentrating on giving the car for most affordable prices
-                inculcating most technologies backed by AI etc.<br /><br />
-                
-                Team Members: <br />
-                Rakesh S B (Design, Aerodynamics, Fuel) <br />
-                Pratham Sinha (Working Mechanism & Fuel) <br />
-                Kumkum Kumari (Design & Aerodynamics) <br />
-                Adarsh Vinod (Working Mechanism & Electrical) <br />
-                Aishwarya Palani (Design & Material Science) <br />
-                Roheni M (Working Mechanism, Fuel & Technology) <br />
-                Aayush Kumar (Working Mechanism & Fuel) <br />
-                Harsh Gupta (Design & Simulation) <br />
-                Harsh Kumar (Working Mechanism & Fuel)
+                  This is my 1st project (Startup): Bock Automotive Self-Powered
+                  Vehicles (SPV): The Future of Transportation. We believe in
+                  empowering the automobile industry by making SPVs. We concentrate
+                  on making cars that can use renewable energy as a source of power
+                  (sounds impossible right..? Remember, the same thing happened with
+                  EVs 20 years ago, but today it's a grand success). We are also
+                  concentrating on giving the car for most affordable prices
+                  inculcating most technologies backed by AI etc.<br /><br />
+
+                  Team Members: <br />
+                  Rakesh S B (Design, Aerodynamics, Fuel) <br />
+                  Pratham Sinha (Working Mechanism & Fuel) <br />
+                  Kumkum Kumari (Design & Aerodynamics) <br />
+                  Adarsh Vinod (Working Mechanism & Electrical) <br />
+                  Aishwarya Palani (Design & Material Science) <br />
+                  Roheni M (Working Mechanism, Fuel & Technology) <br />
+                  Aayush Kumar (Working Mechanism & Fuel) <br />
+                  Harsh Gupta (Design & Simulation) <br />
+                  Harsh Kumar (Working Mechanism & Fuel)
                 </p>
               </span>
             </div>
           </div>
         </div>
 
-                <!-- 2023 Card -->
+        <!-- 2023 Card -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
@@ -294,12 +332,12 @@
                   CMRIT</h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  The objective of this event is to promote & support the untapped 
-                  creativity of individuals and to promote the adoption of the 
-                  latest technologies in Science & Engineering and also to encourage 
-                  CMRIT students to develop innovative products. IDEA HUNT - 2022 
-                  was an event organised by the CMRIT Incubation Centre & IIC Institute 
-                  Innovation Council. Our idea was shortlisted & was uploaded to the 
+                  The objective of this event is to promote & support the untapped
+                  creativity of individuals and to promote the adoption of the
+                  latest technologies in Science & Engineering and also to encourage
+                  CMRIT students to develop innovative products. IDEA HUNT - 2022
+                  was an event organised by the CMRIT Incubation Centre & IIC Institute
+                  Innovation Council. Our idea was shortlisted & was uploaded to the
                   YUKTI portal at the institute level. <br /><br />
                 </p>
 
@@ -317,11 +355,11 @@
               x-transition:leave="transition ease-in duration-300"
               x-transition:leave-start="opacity-100 transform translate-y-0"
               x-transition:leave-end="opacity-0 transform -translate-y-4" class="mt-8 border-t border-white/10 pt-8">
-              <span id="more3" class="text-white"> 
-              Team members: <br />
-              Rakesh S B <br />
-              Harsh Kumar <br />
-              Adarsh Vinod <br />
+              <span id="more3" class="text-white">
+                Team members: <br />
+                Rakesh S B <br />
+                Harsh Kumar <br />
+                Adarsh Vinod <br />
               </span>
             </div>
           </div>
@@ -349,25 +387,25 @@
                   St Joseph's University</h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  This workshop will involve lectures and hands-on activities 
-                  related to the Aditya L-1 mission. These activities will help 
-                  address a few of the unsolved problems in the area of solar 
-                  physics and space weather and underline the importance of the 
-                  Aditya L-1 mission. Aditya L1 is India's first space-based 
-                  observatory mission to study the Sun. The mission consists of 
-                  seven payloads: four remote sensing and three in-situ payloads 
-                  to observe the solar atmosphere, its dynamics, and the space 
-                  weather aspects at the Sun-Earth Lagrangian point (L1). The solar 
-                  science workshop, jointly organised by ISRO and St. Joseph University 
-                  (from January 2, 2023, to January 6, 2023) will provide opportunities 
-                  for younger colleagues to comprehend the current. understanding of the 
+                  This workshop will involve lectures and hands-on activities
+                  related to the Aditya L-1 mission. These activities will help
+                  address a few of the unsolved problems in the area of solar
+                  physics and space weather and underline the importance of the
+                  Aditya L-1 mission. Aditya L1 is India's first space-based
+                  observatory mission to study the Sun. The mission consists of
+                  seven payloads: four remote sensing and three in-situ payloads
+                  to observe the solar atmosphere, its dynamics, and the space
+                  weather aspects at the Sun-Earth Lagrangian point (L1). The solar
+                  science workshop, jointly organised by ISRO and St. Joseph University
+                  (from January 2, 2023, to January 6, 2023) will provide opportunities
+                  for younger colleagues to comprehend the current. understanding of the
                   Sun and Space weather. <br /><br />
 
-                  Students applied to this workshop across India. There were very limited 
-                  seats for this workshop shop. Out of which 148 students were selected, 
-                  most of them were MSc. & Ph.D. students. I was one among those 20 Engineering 
+                  Students applied to this workshop across India. There were very limited
+                  seats for this workshop shop. Out of which 148 students were selected,
+                  most of them were MSc. & Ph.D. students. I was one among those 20 Engineering
                   students selected. It was a proud moment to be one of those solar scientists!!
-                  
+
                 </p>
 
                 <button class="group flex items-center gap-2 text-bock-purple mobile-button">
@@ -395,18 +433,26 @@
             </div>
           </div>
         </div>
-<!--2023 card-->
-        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
-          :class="{ 'transform transition-all duration-500': true }">
+
+        <!--2023 card-->
+        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">16th Jan, 2023 - Present</span>
+              <div class="order-2 md:order-1">
+                <div class="progress-image rounded-2xl overflow-hidden">
+                  <img src="assests/progress/4.png" alt="Solar Science Workshop"
+                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+
+              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">10th Nov, 2022</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: Recognised by
                   <br />IN-SPACe, Dept. of Space, <br />
-                  Govt. of India.</h2>
+                  Govt. of India.
+                </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
                   We were invited to the Indian Space Industry Meet 2.0. Space
@@ -420,18 +466,10 @@
                   taking mankind towards advancements.
                 </p>
 
-
-                <button class="group flex items-center gap-2 text-electric-blue mobile-button">
+                <button class="group flex items-center gap-2 text-bock-purple mobile-button">
                   <span class="text-sm sm:text-base">Read More</span>
                   <i class="ph ph-arrow-right text-lg sm:text-xl group-hover:translate-x-1 transition-transform"></i>
                 </button>
-              </div>
-
-              <div class="relative">
-                <div class="progress-image rounded-2xl overflow-hidden">
-                  <img src="assests/progress/4.png" alt="Future Vision"
-                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
-                </div>
               </div>
             </div>
 
@@ -441,11 +479,8 @@
               x-transition:enter-end="opacity-100 transform translate-y-0"
               x-transition:leave="transition ease-in duration-300"
               x-transition:leave-start="opacity-100 transform translate-y-0"
-              x-transition:leave-end="opacity-0 transform -translate-y-4"
-              class="mt-6 sm:mt-8 border-t border-white/10 pt-6 sm:pt-8">
-
-              <span id="more" class="text-white text-sm sm:text-base">
-                <br /><br />
+              x-transition:leave-end="opacity-0 transform -translate-y-4" class="mt-8 border-t border-white/10 pt-8">
+              <span id="more3" class="text-white">
                 Team members: <br />
                 Rakesh S B (Rocket Engineer) <br />
                 Ganesh Dhanvatre (Aeronautical Engineer, SJCIT) <br />
@@ -457,7 +492,8 @@
           </div>
         </div>
 
-<!--202x card  -->
+
+        <!--202x card  -->
         <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
@@ -477,12 +513,12 @@
                   E-Yantra E-YIC <br class="hidden sm:block" /></h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  e-Yantra, an outreach program funded by the Ministry of Education 
-                  and hosted at the Indian Institute of Technology Bombay, is back 
+                  e-Yantra, an outreach program funded by the Ministry of Education
+                  and hosted at the Indian Institute of Technology Bombay, is back
                   with its e-Yantra Innovation Challenge 2022-23. <br /><br />
 
-                  e-Yantra Innovation Challenge: a competition that trains you in 
-                  Innovation and entrepreneurship. Purpose: Theme-based innovation challenge. 
+                  e-Yantra Innovation Challenge: a competition that trains you in
+                  Innovation and entrepreneurship. Purpose: Theme-based innovation challenge.
                   "Project Based Learning" to solve real-world problems. <br /><br />
 
                   We went on to the top 30/4000 semi-finalists. We were given a
@@ -514,7 +550,7 @@
               x-transition:leave-start="opacity-100 transform translate-y-0"
               x-transition:leave-end="opacity-0 transform -translate-y-4" class="mt-8 border-t border-white/10 pt-8">
               <span id="more3" class="text-white">
-                 Team members : <br>
+                Team members : <br>
                 Rakesh S <br>
                 Harsha Diwakar <br>
                 Mohan Rajeev H V <br>
@@ -524,12 +560,18 @@
         </div>
 
         <!--some-->
-        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
-          :class="{ 'transform transition-all duration-500': true }">
+        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">23rd & 24th June</span>
+              <div class="order-2 md:order-1">
+                <div class="progress-image rounded-2xl overflow-hidden">
+                  <img src="assests/progress/6.png" alt="Solar Science Workshop"
+                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+
+              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">10th Nov, 2022</span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Place: First at National Social Hackathon<br class="hidden sm:block" />by
@@ -548,18 +590,10 @@
                   Atos India Pvt. Ltd graced the dais as the chief guest.
                 </p>
 
-
-                <button class="group flex items-center gap-2 text-electric-blue mobile-button">
+                <button class="group flex items-center gap-2 text-bock-purple mobile-button">
                   <span class="text-sm sm:text-base">Read More</span>
                   <i class="ph ph-arrow-right text-lg sm:text-xl group-hover:translate-x-1 transition-transform"></i>
                 </button>
-              </div>
-
-              <div class="relative">
-                <div class="progress-image rounded-2xl overflow-hidden">
-                  <img src="assests/progress/6.png" alt="Future Vision"
-                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
-                </div>
               </div>
             </div>
 
@@ -569,49 +603,45 @@
               x-transition:enter-end="opacity-100 transform translate-y-0"
               x-transition:leave="transition ease-in duration-300"
               x-transition:leave-start="opacity-100 transform translate-y-0"
-              x-transition:leave-end="opacity-0 transform -translate-y-4"
-              class="mt-6 sm:mt-8 border-t border-white/10 pt-6 sm:pt-8">
+              x-transition:leave-end="opacity-0 transform -translate-y-4" class="mt-8 border-t border-white/10 pt-8">
+              <span id="more3" class="text-white">
+                “Throughout the National Social Hackathon, we witnessed an
+                extraordinary display of innovation and commitment towards
+                addressing social challenges. We are immensely proud of the
+                teams and their dedication and creativity, and we believe that
+                these young minds will shape a better future through their
+                technological prowess,” stated Dr. Sanjay Jain, Principal,
+                CMR Institute of Technology. With an overwhelming response of
+                108 entries, the hackathon witnessed fierce competition and
+                exceptional talent. After a meticulous evaluation process,
+                25 outstanding teams were selected to showcase their innovations,
+                who were further assessed by experts from the Indian Institute of Science (IISC). <br /><br />
 
-              <p
-              <span id="more" class="text-white text-sm sm:text-base">
-                  
-                  “Throughout the National Social Hackathon, we witnessed an 
-                  extraordinary display of innovation and commitment towards 
-                  addressing social challenges. We are immensely proud of the 
-                  teams and their dedication and creativity, and we believe that 
-                  these young minds will shape a better future through their 
-                  technological prowess,” stated Dr. Sanjay Jain, Principal, 
-                  CMR Institute of Technology. With an overwhelming response of 
-                  108 entries, the hackathon witnessed fierce competition and 
-                  exceptional talent. After a meticulous evaluation process, 
-                  25 outstanding teams were selected to showcase their innovations, 
-                  who were further assessed by experts from the Indian Institute of Science (IISC). <br /><br />
-                  
-                  The National Social Hackathon comprised two categories of innovation: 
-                  software and hardware. Participants were encouraged to push the boundaries 
-                  of technology and address social challenges with their inventive solutions. 
-                  This hackathon not only fostered creativity but also aimed to make a positive 
-                  impact on society. <br /><br />
+                The National Social Hackathon comprised two categories of innovation:
+                software and hardware. Participants were encouraged to push the boundaries
+                of technology and address social challenges with their inventive solutions.
+                This hackathon not only fostered creativity but also aimed to make a positive
+                impact on society. <br /><br />
 
-                  One participant, Rakesh, representing CMRIT, shared his exhilarating experience 
-                  during the 24-hour hackathon. Rakesh and his team developed an innovative app 
-                  named “Bock Foods,” which revolutionises the hotel sector through drone delivery. 
-                  Their vision is to automate the food delivery process and enhance efficiency in the 
-                  hospitality industry. In a remarkable display of ingenuity, the team “S.A.P.P.H.I.R.E.” 
-                  from Kalasalingam University introduced an expression and gesture-based hardware control 
-                  mechanism. Their creation enables users to effortlessly control devices or screens using 
-                  simple hand gestures, making technology more accessible and intuitive for all. <br /><br />
+                One participant, Rakesh, representing CMRIT, shared his exhilarating experience
+                during the 24-hour hackathon. Rakesh and his team developed an innovative app
+                named “Bock Foods,” which revolutionises the hotel sector through drone delivery.
+                Their vision is to automate the food delivery process and enhance efficiency in the
+                hospitality industry. In a remarkable display of ingenuity, the team “S.A.P.P.H.I.R.E.”
+                from Kalasalingam University introduced an expression and gesture-based hardware control
+                mechanism. Their creation enables users to effortlessly control devices or screens using
+                simple hand gestures, making technology more accessible and intuitive for all. <br /><br />
 
-                  The National Social Hackathon served as a platform for young minds to showcase their 
-                  passion, skills, and commitment to social innovation. Dr.Sharmila who coordinated 
-                  the event, expressed her gratitude to Atos India for their collaboration and unwavering 
-                  support in organising this hackathon. She also commended the participants for their 
-                  dedication and commitment to leveraging technology for social good. The success of the 
-                  National Social Hackathon sets a new benchmark for innovation and highlights the 
-                  potential of young minds to bring about positive change. CMRIT and Atos India remain 
-                  committed to nurturing and empowering the next generation of innovators who will 
-                  shape a better future for all. <br /><br />
-                
+                The National Social Hackathon served as a platform for young minds to showcase their
+                passion, skills, and commitment to social innovation. Dr.Sharmila who coordinated
+                the event, expressed her gratitude to Atos India for their collaboration and unwavering
+                support in organising this hackathon. She also commended the participants for their
+                dedication and commitment to leveraging technology for social good. The success of the
+                National Social Hackathon sets a new benchmark for innovation and highlights the
+                potential of young minds to bring about positive change. CMRIT and Atos India remain
+                committed to nurturing and empowering the next generation of innovators who will
+                shape a better future for all. <br /><br />
+
                 <br /><br />Team members under Bock Automotive : <br>
                 Rakesh S B <br>
                 Harsh Kumar <br>
@@ -622,7 +652,6 @@
                 Harsha Diwakar <br>
                 Anagha Srinivas <br>
                 Isha Agarwal <br>
-                </p>
               </span>
             </div>
           </div>
@@ -652,7 +681,7 @@
                   that covers the entire gamut of technology space. With individual tracks devoted to IT & Deeptech,
                   Biotech, Startups, and Global Innovation Alliance. <br> <br> Delegates can plan their three days to
                   make the most of what the event has to offer. Over 75+ sessions await you at the conference, including
-                  thought-provoking and inspiring keynotes, engaging panel discussions, andinformative presentations; 
+                  thought-provoking and inspiring keynotes, engaging panel discussions, andinformative presentations;
                   from 400+ global domain experts.
                 </p>
 
@@ -705,12 +734,12 @@
                 </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  Bock was established as an MSME (Micro, Small, and Medium Enterprises) 
-                  company under the Ministry of Micro, Small, and Medium Enterprises on 
-                  November 6, 2023. Initially, it operated with six units and a modest 
-                  team of 20 to 30 people. At that time, BOCK was limited to the CMR 
-                  Institute of Technology and had not yet expanded to other colleges. 
-                  Despite its humble beginnings, BOCK remained a small yet dedicated 
+                  Bock was established as an MSME (Micro, Small, and Medium Enterprises)
+                  company under the Ministry of Micro, Small, and Medium Enterprises on
+                  November 6, 2023. Initially, it operated with six units and a modest
+                  team of 20 to 30 people. At that time, BOCK was limited to the CMR
+                  Institute of Technology and had not yet expanded to other colleges.
+                  Despite its humble beginnings, BOCK remained a small yet dedicated
                   crew, laying the foundation for future growth and innovation.
                 </p>
               </div>
@@ -724,8 +753,8 @@
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">8 Feb, 2024 
-                  </span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">8 Feb, 2024
+                </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Octakaigon Bock Private Limited Company <br class="hidden sm:block" />
@@ -733,19 +762,19 @@
                 </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  On February 8, 2024, BOCK transitioned into a private limited company under the name 
-                  Octakaigon Bock Private Limited, registered with the Ministry of Corporate Affairs, 
-                  Government of India. This marked a significant milestone as the company expanded its 
-                  operations beyond CMR Institute of Technology to four prominent colleges across 
-                  Bengaluru: RV College of Engineering, MS Ramaiah Institute of Technology, and 
-                  BMS College of Engineering, among 5 others across India. Despite this growth, 
-                  BOCK maintained its roots at the CMRIT Business Incubation Centre, where it was 
-                  incubated and provided with dedicated office space to commence its operations. 
-                  With a growing team of 120 people, the company also launched six innovative 
-                  programs—BOCK Automotive, BOCK Foods, BOCK Space, BOCK Ai, BOCK Health, and BOCK Chain—which 
+                  On February 8, 2024, BOCK transitioned into a private limited company under the name
+                  Octakaigon Bock Private Limited, registered with the Ministry of Corporate Affairs,
+                  Government of India. This marked a significant milestone as the company expanded its
+                  operations beyond CMR Institute of Technology to four prominent colleges across
+                  Bengaluru: RV College of Engineering, MS Ramaiah Institute of Technology, and
+                  BMS College of Engineering, among 5 others across India. Despite this growth,
+                  BOCK maintained its roots at the CMRIT Business Incubation Centre, where it was
+                  incubated and provided with dedicated office space to commence its operations.
+                  With a growing team of 120 people, the company also launched six innovative
+                  programs—BOCK Automotive, BOCK Foods, BOCK Space, BOCK Ai, BOCK Health, and BOCK Chain—which
                   continue to drive its vision and mission forward.
                 </p>
-                
+
               </div>
 
               <div class="relative">
@@ -763,9 +792,15 @@
           :class="{ 'transform transition-all duration-500': true }">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">25 May, 2024 
-                  </span>
+              <div class="relative">
+                <div class="progress-image rounded-2xl overflow-hidden">
+                  <img src="assests/progress/10.jpg" alt="Future Vision"
+                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">25 May, 2024
+                </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   Recognition for Octakaigon Bock Private Limited <br class="hidden sm:block" />
@@ -773,21 +808,13 @@
                 </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  Octakaigon Bock Private Limited received a Certificate of Appreciation from CMR 
-                  Institute of Technology during the 21st Graduation Ceremony. This recognition 
-                  celebrates our successful startup registration and acknowledges the hard work, 
-                  dedication, and perseverance of the entire BOCK team. This milestone fuels our 
-                  passion for innovation and excellence as we continue to push boundaries and drive change. 
+                  Octakaigon Bock Private Limited received a Certificate of Appreciation from CMR
+                  Institute of Technology during the 21st Graduation Ceremony. This recognition
+                  celebrates our successful startup registration and acknowledges the hard work,
+                  dedication, and perseverance of the entire BOCK team. This milestone fuels our
+                  passion for innovation and excellence as we continue to push boundaries and drive change.
 
                 </p>
-                
-              </div>
-
-              <div class="relative">
-                <div class="progress-image rounded-2xl overflow-hidden">
-                  <img src="assests/progress/10.jpg" alt="Future Vision"
-                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
-                </div>
               </div>
             </div>
           </div>
@@ -810,139 +837,133 @@
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
                   DPIIT<br class="hidden sm:block" />
                   #startupindia <br class="hidden sm:block" />
-                  </h2>
+                </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  On September 22, 2024, we officially became a certified startup under the prestigious 
-                  Startup India initiative, recognized by DPIIT, Ministry of Commerce and Industry. 
-                  This milestone validates our innovative approach and entrepreneurial vision, 
-                  marking our transition from a company to an official startup. With this recognition, 
+                  On September 22, 2024, we officially became a certified startup under the prestigious
+                  Startup India initiative, recognized by DPIIT, Ministry of Commerce and Industry.
+                  This milestone validates our innovative approach and entrepreneurial vision,
+                  marking our transition from a company to an official startup. With this recognition,
                   new doors have opened for growth, scalability, and making a meaningful impact in our domains.
                 </p>
 
-                
+
               </div>
             </div>
           </div>
         </div>
 
         <!-- 2024 Card -->
-        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
+        
+
+          <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
           :class="{ 'transform transition-all duration-500': true }">
           <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
             <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="space-y-4 sm:space-y-6">
-                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">15 September, 2025
-                  </span>
-                <h2
-                  class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
-                  India 5000 best MSME Awards</h2>
-                <p
-                  class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  BOCK has been proudly nominated for the India 5000 Best MSME Award, 
-                  a prestigious recognition celebrating excellence in the MSME sector. 
-                  This nomination is a testament to our unwavering commitment to 
-                  innovation, quality, and impactful business performance. It reflects 
-                  the dedication of our incredible team and marks another milestone in 
-                  our journey towards excellence and meaningful contributions to the MSME ecosystem. 
-                </p>
-                
-              </div>
-
               <div class="relative">
                 <div class="progress-image rounded-2xl overflow-hidden">
                   <img src="assests/progress/12.jpg" alt="Future Vision"
                     class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
-            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="order-2 md:order-1">
-                <div class="progress-image rounded-2xl overflow-hidden">
-                  <img src="assests/progress/13.jpg" alt="Solar Science Workshop"
-                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
-                </div>
-              </div>
-
               <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">16 to 17th
-                  October, 2024</span>
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">15 September, 2025
+                </span>
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
-                  Attended <br class="hidden sm:block" />
-                  nasscom future forge 2024 <br class="hidden sm:block" />
-                  </h2>
-                <p
-                  class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  Deep tech has the power to transform the world, and we at Bock AI were honored to participate in
-                  Nasscom Future Forge 2024 on 16th & 17th October in Bangalore. With the theme ‘Accelerating Deep Tech
-                  Growth’, the event brought together trailblazers from across the globe to address critical challenges
-                  like infrastructure gaps, regulatory hurdles, and the need for deep tech talent.
-
-                  <br />As part of this vibrant ecosystem, we exchanged ideas, explored solutions, and reaffirmed our
-                  commitment to driving sustainable innovation. Together, we’re shaping a brighter future from India for
-                  the world!
-                </p>
-              </div>
-            </div>
-
-            <!-- 2025 Card -->
-        <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
-          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
-            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-              <div class="order-2 md:order-1">
-                <div class="progress-image rounded-2xl overflow-hidden">
-                  <img src="assests/progress/14.jpg" alt="Solar Science Workshop"
-                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
-                </div>
-              </div>
-
-              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
-                <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">10th Feb, 2025 </span>
-                <h2
-                  class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
-                  Ministry of Commerce and Industry<br class="hidden sm:block" />
-                  DPIIT <br class="hidden sm:block" />
-                  Controller General of Patents, Design & Trademarks <br class="hidden sm:block" />
+                  India 5000 best MSME Awards
                 </h2>
                 <p
                   class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
-                  Octakaigon Bock Private Limited trademark registered trademark for the word mark 
-                  “BOCK” together with its logo has been officially granted and registered by the 
-                  Government of India, Ministry of Commerce & Industry, Department for Promotion of Industry 
-                  and Internal Trade, Office of the Controller General of Patents, Designs and Trade Marks. 
-                  The mark has been registered under Class 42, covering scientific and technological services, 
-                  research and design services, industrial analysis and research services, and the design and development 
-                  of computer hardware and software. The application was filed on 06 May 2024 under Application Number 6419664 
-                  and was subsequently published in Journal Number 2195-0 dated 10 February 2025. The registration has 
-                  been conferred with the status “Registered” and is valid until 06 May 2034, thereby granting 
-                  Octakaigon Bock Private Limited the exclusive rights and legal protection for the use of 
-                  “BOCK” within the specified class of goods and services. This registration represents a significant 
-                  milestone for the company, ensuring the safeguarding of its brand identity, strengthening its intellectual 
-                  property portfolio, and reinforcing its long-term vision and commitment to innovation, research, 
-                  and development in the technological domain.
-                </p>
+                  BOCK has been proudly nominated for the India 5000 Best MSME Award,
+                    a prestigious recognition celebrating excellence in the MSME sector.
+                    This nomination is a testament to our unwavering commitment to
+                    innovation, quality, and impactful business performance. It reflects
+                    the dedication of our incredible team and marks another milestone in
+                    our journey towards excellence and meaningful contributions to the MSME ecosystem
 
-                
+                </p>
               </div>
             </div>
-
-
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Subtle Background Elements -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-bock-purple/5 rounded-full blur-3xl"></div>
-    </div>
+          <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded">
+            <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+              <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <div class="progress-image rounded-2xl overflow-hidden">
+                    <img src="assests/progress/13.jpg" alt="Solar Science Workshop"
+                      class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                  </div>
+                </div>
+
+                <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                  <span class="text-bock-purple text-sm sm:text-base mobile-subtitle">16 to 17th
+                    October, 2024</span>
+                  <h2
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
+                    Attended <br class="hidden sm:block" />
+                    nasscom future forge 2024 <br class="hidden sm:block" />
+                  </h2>
+                  <p
+                    class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                    Deep tech has the power to transform the world, and we at Bock AI were honored to participate in
+                    Nasscom Future Forge 2024 on 16th & 17th October in Bangalore. With the theme ‘Accelerating Deep
+                    Tech
+                    Growth’, the event brought together trailblazers from across the globe to address critical
+                    challenges
+                    like infrastructure gaps, regulatory hurdles, and the need for deep tech talent.
+
+                    <br />As part of this vibrant ecosystem, we exchanged ideas, explored solutions, and reaffirmed
+                    our
+                    commitment to driving sustainable innovation. Together, we’re shaping a brighter future from India
+                    for
+                    the world!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2025 Card -->
+          
+
+          <div class="progress-card rounded-3xl p-1" x-data="{ expanded: false }" @click="expanded = !expanded"
+          :class="{ 'transform transition-all duration-500': true }">
+          <div class="bg-space-navy/50 rounded-3xl mobile-compact sm-compact p-6 sm:p-8 md:p-12">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+              <div class="relative">
+                <div class="progress-image rounded-2xl overflow-hidden">
+                  <img src="assests/progress/14.png" alt="Future Vision"
+                    class="w-full h-[200px] sm:h-[250px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+              <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                <span class="text-electric-blue text-sm sm:text-base mobile-subtitle">10th Feb, 2025
+                </span>
+                <h2
+                  class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mobile-title xs-title mobile-text-break">
+                  Ministry of Commerce and Industry<br class="hidden sm:block" />
+DPIIT<br class="hidden sm:block" />
+Controller General of Patents, Design & Trademarks
+                </h2>
+                <p
+                  class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mobile-body xs-text mobile-text-break">
+                  Octakaigon Bock Private Limited trademark registered trademark for the word mark “BOCK” together with its logo has been officially granted and registered by the Government of India, Ministry of Commerce & Industry, Department for Promotion of Industry and Internal Trade, Office of the Controller General of Patents, Designs and Trade Marks. The mark has been registered under Class 42, covering scientific and technological services, research and design services, industrial analysis and research services, and the design and development of computer hardware and software. The application was filed on 06 May 2024 under Application Number 6419664 and was subsequently published in Journal Number 2195-0 dated 10 February 2025. The registration has been conferred with the status “Registered” and is valid until 06 May 2034, thereby granting Octakaigon Bock Private Limited the exclusive rights and legal protection for the use of “BOCK” within the specified class of goods and services. This registration represents a significant milestone for the company, ensuring the safeguarding of its brand identity, strengthening its intellectual property portfolio, and reinforcing its long-term vision and commitment to innovation, research, and development in the technological domain.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- Subtle Background Elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-bock-purple/5 rounded-full blur-3xl"></div>
+      </div>
   </section>
 
   <!-- Download Section -->
@@ -991,16 +1012,3 @@
 </html>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
