@@ -125,16 +125,34 @@
             }
         }
     </script>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+        
     <style>
-        /* Global z-index management and stacking context fixes */
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
+        html {
+    overflow-x: hidden;
+}
 
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+.horizontal-business-section {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.horizontal-container {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.horizontal-scroll-wrapper {
+    overflow: hidden;
+    max-width: 100%;
+}
         /* Ensure proper stacking context for all sections */
         section {
             position: relative;
@@ -2008,199 +2026,235 @@
                     <span class="text-white">FOSTERING</span>
                 </h1>
             </div>
+        </div>
+
+
             <!-- Rotating Ecosystem Images Container -->
-            <div class="relative h-24 sm:h-32 lg:h-40 overflow-hidden w-full">
-                <div class="ecosystem-track flex items-center gap-6 sm:gap-8 lg:gap-10 animate-scroll-left">
+            
+               <div class="marquee-wrapper">
+                   <div class="marquee-track">
                     <!-- All available ecosystem images - First Set -->
                     <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/2.png" alt="Ecosystem Partner 2" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/3.jpg" alt="Ecosystem Partner 3" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/4.jpg" alt="Ecosystem Partner 4" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/5.png" alt="Ecosystem Partner 5" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/6.png" alt="Ecosystem Partner 6" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    
-                    <!-- Duplicate set for seamless infinite loop -->
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/2.png" alt="Ecosystem Partner 2" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/3.jpg" alt="Ecosystem Partner 3" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/4.jpg" alt="Ecosystem Partner 4" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/5.png" alt="Ecosystem Partner 5" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/6.png" alt="Ecosystem Partner 6" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
-                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                 <a href="https://www.mca.gov.in/content/mca/global/en/home.html" target="_blank" rel="noopener noreferrer">
+                 <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                   </a>
                     </div>
                 
-                </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                     <a href="https://karnatakadigital.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                     <img src="assests/ecosystem/2.png" alt="Ecosystem Partner 2" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                      </a>
+                      </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://eitbt.karnataka.gov.in/en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/3.jpg" alt="Ecosystem Partner 3" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://esdmsplinc.karnataka.gov.in/#/login" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/4.jpg" alt="Ecosystem Partner 4" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.missionstartupkarnataka.org/?en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/5.png" alt="Ecosystem Partner 5" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                         </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.inspace.gov.in/inspace" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/6.png" alt="Ecosystem Partner 6" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.indiascienceandtechnology.gov.in/listingpage/department-space-dos" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                            <a href="https://most.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://heavyindustries.gov.in/en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.ibef.org/government-schemes/smart-cities-mission" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://indiaai.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://ism.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://msme.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.ibef.org/government-schemes/self-reliant-india-aatm-nirbhar-bharat-abhiyan" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.makeinindia.com/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                 
+            
+                    
+                    <!-- Duplicate set for seamless infinite loop -->
+                     
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                     <a href="https://www.mca.gov.in/content/mca/global/en/home.html" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/1.png" alt="Ecosystem Partner 1" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                          </a>
+                         </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                       <a href="https://karnatakadigital.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                       <img src="assests/ecosystem/2.png" alt="Ecosystem Partner 2" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                           </a>
+                              </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://eitbt.karnataka.gov.in/en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/3.jpg" alt="Ecosystem Partner 3" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://esdmsplinc.karnataka.gov.in/#/login" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/4.jpg" alt="Ecosystem Partner 4" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.missionstartupkarnataka.org/?en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/5.png" alt="Ecosystem Partner 5" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.inspace.gov.in/inspace" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/6.png" alt="Ecosystem Partner 6" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                            <a href="https://www.indiascienceandtechnology.gov.in/listingpage/department-space-dos" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/7.jpg" alt="Ecosystem Partner 7" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://most.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/10.png" alt="Ecosystem Partner 10" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://heavyindustries.gov.in/en" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/11.png" alt="Ecosystem Partner 11" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.ibef.org/government-schemes/smart-cities-mission" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/12.jpg" alt="Ecosystem Partner 12" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/13.jpg" alt="Ecosystem Partner 13" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/14.png" alt="Ecosystem Partner 14" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://indiaai.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/15.png" alt="Ecosystem Partner 15" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://ism.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/16.jpg" alt="Ecosystem Partner 16" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://msme.gov.in/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/17.png" alt="Ecosystem Partner 17" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.ibef.org/government-schemes/self-reliant-india-aatm-nirbhar-bharat-abhiyan" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/18.png" alt="Ecosystem Partner 18" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0 h-16 sm:h-20 lg:h-24 bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:scale-110 shadow-lg">
+                        <a href="https://www.makeinindia.com/" target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+                        <img src="assests/ecosystem/19.jpg" alt="Ecosystem Partner 19" class="h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        </a>
+                    </div>
+                
+            
+                 </div>
             </div>
         </div>
-        
-        <style>
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0%);
-                }
-                100% {
-                    transform: translateX(-50%);
-                }
-            }
-            
-            .animate-scroll-left {
-                animation: scroll-left 25s linear infinite;
-                width: 200%; /* Exactly double width for seamless loop */
-                min-width: max-content;
-            }
-            
-            .ecosystem-track {
-                will-change: transform;
-                display: flex;
-                align-items: center;
-                white-space: nowrap;
-            }
-            
-            .ecosystem-track > * {
-                flex-shrink: 0;
-            }
-            
-            .logos-track:hover {
-                animation-play-state: paused;
-            }
-            
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            .animate-fadeInUp {
-                animation: fadeInUp 1s ease-out forwards;
-            }
-        </style>
     </section>
+        <style>
+            .marquee-wrapper {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .marquee-track {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: max-content;
+        gap: 2rem;
+        animation: marquee-scroll 35s linear infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+    }
+
+    @keyframes marquee-scroll {
+        0%   { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+ 
+        </style>
+    
     <!-- Footer Separator -->
     <div class="footer-separator">
         <div class="separator-line">
