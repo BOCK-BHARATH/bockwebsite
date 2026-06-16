@@ -60,11 +60,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    
-
-
-    <style>
-        body {
+   
+        <body {
             font-family: 'Inter', sans-serif;
         }
 
@@ -715,26 +712,9 @@
                 <!-- Map -->
                 <div
                     class="gradient-border rounded-xl overflow-hidden backdrop-blur-lg bg-black/20 h-48 sm:h-64 md:h-80 lg:h-96 w-full relative group">
-                    <!-- Embedded Google Maps -->
-            <iframe 
-        width="100%" 
-        height="100%" 
-        style="border:0; border-radius: 12px;" 
-        loading="lazy" 
-        allowfullscreen="" 
-        referrerpolicy="no-referrer-when-downgrade" 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12394.116374908468!2d77.71150417486157!3d12.962316923599982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae122681306cc7%3A0xf456dd72caae7c85!2sCMRIT%20College!5e0!3m2!1sen!2sin!4v1781600389088!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <!-- Location Pointer Overlay -->
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-    <div class="relative group">
-        
-        <!-- Tooltip Label -->
-        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 bg-electric-blue text-white px-3 py-2 rounded-lg text-xs sm:text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
-            BOCK Office
-        </div>
-    </div>
-</div>
+                    <!-- Interactive Map -->
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7776.174217220548!2d77.7086217745465!3d12.966277614996054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13cf55cb02bb%3A0xa625b081cb4d7173!2sBOCK%20(Head%20Office%2C%20CMRIT)!5e0!3m2!1sen!2sin!4v1781607240872!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div id="map" class="w-full h-full rounded-xl cursor-pointer" style="z-index: 1;"></div>
                 </div>
 
             </div>
@@ -766,13 +746,58 @@
         }
 
 
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
 
-document.addEventListener('DOMContentLoaded', function () {
-    loadComponents();
-    
-});
+            // Custom marker icon (blue marker)
+            const customIcon = L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="background: #1F8EF1; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 3px 10px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 30]
+            });
 
- </script>
+            // Add marker
+            const marker = L.marker(bockLocation, { icon: customIcon }).addTo(map);
+
+            // Popup content
+            marker.bindPopup(`
+                <div style="font-family: 'Inter', sans-serif; min-width: 200px;">
+                    <h3 style="color: #1F8EF1; font-weight: 600; margin: 0 0 8px 0; font-size: 16px;">BOCK Office</h3>
+                    <p style="margin: 4px 0; font-size: 13px; color: #333;">Incubation Center, CMRIT College</p>
+                    <p style="margin: 4px 0; font-size: 12px; color: #666;">Kundalahalli Colony, Brookefield</p>
+                    <p style="margin: 4px 0; font-size: 12px; color: #666;">Bengaluru, Karnataka 560037</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=BOCK+(Head+Office,+CMRIT)&destination_place_id=&query=12.966206,77.711325" 
+                       target="_blank" 
+                       style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #1F8EF1; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 500;">
+                        Get Directions →
+                    </a>
+                </div>
+            `);
+
+            // Open popup by default
+            marker.openPopup();
+
+            map.on('click', function () {
+                window.open('https://www.google.com/maps/dir/?api=1&destination=BOCK+(Head+Office,+CMRIT)&query=12.966206,77.711325', '_blank');
+            });
+
+            // Also handle marker click
+            marker.on('click', function (e) {
+                L.DomEvent.stopPropagation(e);
+                window.open('https://www.google.com/maps/dir/?api=1&destination=BOCK+(Head+Office,+CMRIT)&query=12.966206,77.711325', '_blank');
+            });
+        
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadComponents();
+        });
+    </script>
+
+
 </body>
 
 </html>
