@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - BOCK</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="assests/logos/Bock Text White Resized-01.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assests/logos/Bock main.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
@@ -60,8 +60,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-   
-        <body {
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <style>
+        body {
             font-family: 'Inter', sans-serif;
         }
 
@@ -713,7 +719,6 @@
                 <div
                     class="gradient-border rounded-xl overflow-hidden backdrop-blur-lg bg-black/20 h-48 sm:h-64 md:h-80 lg:h-96 w-full relative group">
                     <!-- Interactive Map -->
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7776.174217220548!2d77.7086217745465!3d12.966277614996054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13cf55cb02bb%3A0xa625b081cb4d7173!2sBOCK%20(Head%20Office%2C%20CMRIT)!5e0!3m2!1sen!2sin!4v1781607240872!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div id="map" class="w-full h-full rounded-xl cursor-pointer" style="z-index: 1;"></div>
                 </div>
 
@@ -745,6 +750,18 @@
             }
         }
 
+        // Initialize Map
+        function initMap() {
+            const bockLocation = [12.966206, 77.711325];
+            const isMobile = window.innerWidth <= 768;
+            const map = L.map('map', {
+                center: bockLocation,
+                zoom: isMobile ? 15 : 16,
+                zoomControl: true,
+                scrollWheelZoom: false,
+                touchZoom: true,
+                dragging: true
+            });
 
             // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -790,14 +807,13 @@
                 L.DomEvent.stopPropagation(e);
                 window.open('https://www.google.com/maps/dir/?api=1&destination=BOCK+(Head+Office,+CMRIT)&query=12.966206,77.711325', '_blank');
             });
-        
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             loadComponents();
+            initMap();
         });
     </script>
-
-
 </body>
 
 </html>
